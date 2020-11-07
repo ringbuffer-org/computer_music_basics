@@ -1,0 +1,124 @@
+.. title: Weather
+.. slug: weather
+.. date: 2020-11-05 13:47:51 UTC
+.. tags: 
+.. category: basics:sonification
+.. link: 
+.. description: 
+.. type: text
+
+
+|example|
+
+
+Code
+====
+
+.. code-block:: html
+
+   <!doctype html>
+
+Links and More Examples
+=======================
+
+https://github.com/mdn/webaudio-examples
+
+ 
+.. |example| raw:: html
+		
+  <!doctype html>
+  <html>
+
+  <head>
+  <title>Where would you rather be?</title>
+  </head>
+
+  <body>
+  <p>Where would you rather be?</p>
+  <p>
+  <button onclick="berlin()">Berlin</button>
+  <button onclick="honolulu()">Honolulu</button>
+  <button onclick="stop()">Stop</button>
+
+  </p>
+
+
+  </body>
+
+  <div id="weather">
+  <div id="description"></div>
+  <h1 id="temp"></h1>
+  <div id="location"></div>
+  </div>
+
+  <script>
+
+
+
+  var audioContext = new window.AudioContext
+  var oscillator   = audioContext.createOscillator()
+  var gainNode     = audioContext.createGain()
+
+  gainNode.gain.value = 0
+
+  oscillator.connect(gainNode)
+  gainNode.connect(audioContext.destination)
+
+  oscillator.start(0)
+
+  function berlin()
+  {
+  get_weather('Berlin');
+  gainNode.gain.value = 1
+
+  }
+
+  function honolulu()
+  {
+  get_weather('Honolulu');
+  gainNode.gain.value = 1
+  }
+
+
+  function stop()
+  {
+  gainNode.gain.value = 0
+  }
+
+  function frequency(y)
+  {
+  oscillator.frequency.value = y
+  }
+
+
+
+  function get_weather( cityName )
+  {
+      var key = 'eab7c410674e15bfdd841f66941a92c2';
+      fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityName+ '&appid=' + key)
+      .then(function(resp) { return resp.json()}) // Convert data to json
+      .then(function(data) {
+      setSynth(data);
+      })
+      .catch(function() {
+      // catch any errors
+      });
+  }
+
+
+  function setSynth(d)
+  {
+      var celcius = Math.round(parseFloat(d.main.temp)-273.15);
+      var fahrenheit = Math.round(((parseFloat(d.main.temp)-273.15)*1.8)+32);
+
+      oscillator.frequency.value = 1000*(100/(celcius*celcius));
+
+      document.getElementById('description').innerHTML = d.weather[0].description;
+      document.getElementById('temp').innerHTML = celcius + '&deg;';
+      document.getElementById('location').innerHTML = d.name;
+  }
+
+
+  </script>
+  </html>
+	

@@ -1,0 +1,19 @@
+#N canvas 657 370 450 355 10;
+#X obj 24 18 hsl 128 15 0 1000 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 21 54 osc~;
+#X obj 21 137 dac~;
+#X obj 21 97 *~;
+#X obj 83 61 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 129 105 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 127 156 activate audio;
+#X msg 129 127 \; pd dsp 1;
+#X text 102 59 ON / OFF;
+#X text 56 0 Frequency;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 3 0 2 0;
+#X connect 4 0 3 1;
+#X connect 5 0 7 0;

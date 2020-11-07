@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+
+<blockquote style="border: 2px solid #122; padding: 10px; background-color: #ccc;">
+
+  <head>
+    <title>Sine Example</title>
+  </head>
+
+  <body>
+    <p>Sine Example.</p>
+    <p>
+      <button onclick="play()">Play</button>
+      <button onclick="stop()">Stop</button>
+      <span>
+	<input id="pan" type="range" min="10" max="1000" step="1" value="440" oninput="frequency(this.value);">
+	Frequency
+      </span>
+    </p>
+  
+  </body>
+
+</blockquote>
+
+
+  <script>
+    var audioContext = new window.AudioContext
+    var oscillator = audioContext.createOscillator()
+    var gainNode = audioContext.createGain()
+    
+    gainNode.gain.value = 0
+
+    oscillator.connect(gainNode)
+    gainNode.connect(audioContext.destination)
+
+    oscillator.start(0)
+
+    function play()
+    {
+      gainNode.gain.value = 1
+    }
+
+    function stop()
+    {
+      gainNode.gain.value = 0
+    }
+    
+    function frequency(y)
+    {
+      oscillator.frequency.value = y
+    }
+    
+  
+  </script>
+</html>
