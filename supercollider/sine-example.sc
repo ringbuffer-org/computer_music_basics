@@ -45,6 +45,8 @@ SynthDef(\sine_example,
 // create another synth from the SynthDef
 ~another_synth = Synth(\sine_example, [\f, 1100, \a, 1]);
 
+// set a parameter
+~my_synth.set(\f,900);
 
 // free the nodes
 ~my_synth.free();

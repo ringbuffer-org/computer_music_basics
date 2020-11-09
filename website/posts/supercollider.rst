@@ -21,6 +21,8 @@ tool for distributed and embedded systems,
 allowing the full remote control of synthesis processes
 and live coding.
 
+-----
+
 Getting Started
 ---------------
 
@@ -33,8 +35,11 @@ https://supercollider.github.io/download
 
 
 Code snippets in this example are taken from the
-accompanying repository: 
+accompanying repository:
+`SC Example <https://gitlab.tubit.tu-berlin.de/henrikvoncoler/computer-music-basics/blob/master/supercollider/sine-example.sc>`_.
+You can simple copy and paste them into your ScIDE.
 
+-----
 
 sclang
 ======
@@ -75,13 +80,19 @@ When something is used with the extension ``.ar``,
 this refers to audio signals (audio rate),
 whereas ``.kr`` uses the control rate.
 
+-----
+
 ScIDE
 =====
 
 Working with SC in the terminal is rather inconvinient.
 The SuperCollider IDE (ScIDE) is the environment for
 live coding in ``sclang``, allowing the control of the
-SuperCollider language.
+SuperCollider language:
+
+.. thumbnail:: /images/basics/scide.png
+
+
 When editing ``.sc`` files in the ScIDE, they can be
 executed as a whole.
 Moreover, single blocks, respectively
@@ -89,6 +100,7 @@ single lines can be evaluated, which is the
 standard way of using SC, especially when exploring
 the possibilities.
 
+-----
 
 Server
 ======
@@ -96,19 +108,20 @@ Server
 Synthesis and processing happens inside an SC server.
 A server can be booted from the 
 
-.. code-block:: cpp
+.. code-block:: supercollider
 
    // boot the server
    s.boot;
 
 
-Synth
-=====
+Synths
+------
 
 Inside the SC server, sound is usually generated
-and processed inside Synths.
+and processed inside Synths. A synth can be defined
+inside curly brackets:
 
-.. code-block:: cpp
+.. code-block:: supercollider
 
  // Play a Synth
  (
@@ -123,10 +136,25 @@ and processed inside Synths.
 
  )
 
+
+All playing nodes can be removed from the
+server, if they are not associated with
+a cient side variable:
+
+.. code-block:: supercollider
+
+    // free all nodes from the server
+    s.freeAll
+
+-----
+
+SynthDef
+--------
+ 
 SynthDefs are templates for Synths, which are
 sent to a server:
 
-.. code-block:: cpp
+.. code-block:: supercollider
 
  // define a SynthDef and send it to the server
  (
@@ -147,5 +175,32 @@ sent to a server:
  )
 
 
+Once a SynthDef has been sent to the server,
+instances can be created:
+
+.. code-block:: supercollider
+
+    // create a synth from the SynthDef
+    ~my_synth = Synth(\sine_example, [\f, 1000, \a, 1]);
+
+    // create another synth from the SynthDef
+    ~another_synth = Synth(\sine_example, [\f, 1100, \a, 1]);
 
  
+Parameters of running synths can be changed,
+using the associated variable on the client side:
+
+.. code-block:: supercollider
+
+    // set a parameter
+    ~my_synth.set(\f,900);
+
+
+Running synths with a client-side
+variable can be removed from the server:
+
+.. code-block:: supercollider
+
+    // free the nodes
+    ~my_synth.free();
+    ~another_synth.free();

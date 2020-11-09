@@ -1,5 +1,5 @@
-.. title: A very brief History
-.. slug: a-very-brief-history
+.. title: Origins
+.. slug: origins
 .. date: 2020-11-05 13:47:15 UTC
 .. tags: 
 .. category: basics:introduction
@@ -43,6 +43,38 @@ researchers, such as Newman Guttman, James Tenney
 and Jean Claude Risset. Later, the Bell Labs were visited
 by renowned composers of various genres, including
 John Cage, Edgard Varèse and Laurie Spiegel (Park, 2009).
+
+-----
+
+Chowning & CCRMA
+----------------
+
+The synthesis experiments at Bell Labs are the
+origin of most music programming
+languages and methods for digital sound synthesis.
+The foundation for many further developments was
+laid when John Chowning brought the software MUSIC VI
+to Stanford from a visit at Bell Labs in the 1060s.
+After migrating it to a *PDP-6* computer,
+Chowning worked on his groundbreaking digital compositions,
+using the FM method and spatial techniques.
+
+
+Puckette & IRCAM
+----------------
+
+
+Most of the active music programming
+environments, such as Puredata, Max/MSP, SuperCollider or CSound,
+are descendants of the MUSIC languages.
+%
+Graphical programming languages like Max/MSP
+and Puredata were actually born as patching and mapping environments.
+%
+Their common ancestor, the \textit{Patcher}, developed by
+Miller Puckette at CCRMA in the 1980s,
+was a graphical environment for connecting 
+MAX real-time processes and for controlling MIDI instruments. 
 
 -----
 

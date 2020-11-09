@@ -1,5 +1,5 @@
-.. title: JACK API
-.. slug: jack-api
+.. title: JACK
+.. slug: jack
 .. date: 2020-11-05 10:47:15 UTC
 .. tags: 
 .. category: basics:linuxaudio
@@ -9,7 +9,8 @@
 .. type: text
 
 
-The `JACK API <https://jackaudio.org/>`_ is an audio server, allowing
+The `JACK API <https://jackaudio.org/>`_ implements
+an audio server, allowing
 the connection of various software clients and
 hardware interfaces.
 In short, it turns the whole
