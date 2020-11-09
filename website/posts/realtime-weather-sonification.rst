@@ -89,16 +89,30 @@ Temperatures to Frequencies
 Mapping
 =======
 
-In this example we are using a simple formula for turning temperatures
-into more or less pleasing (annoying) tones:
+In this example we are using a simple freuency modulation
+formula for turning temperature and humidity
+into more or less pleasing (annoying) sounds.
+The frequency of a first oscillator is derived
+from the temperature:
 
-:math:`\displaystyle f_0 = 10 \frac{1}{{T / C^{\circ} }^2}`
+:math:`\displaystyle f_1 = 10 \frac{1}{{T^2 / C^{\circ} }}`
 
+The modulator frequency is controlled by the humidity :math:`H`:
+      
+:math:`y = sin(2 \pi (f_1 + 100*sin(2 \pi H t))t)`
 
+-----
 
+The Result
+----------
 
+The resulting app fetches the weather data of a chosen city,
+extracts temperature and humidity and sets the parameters
+of the audio processes:
 
-|example|
+.. raw:: html
+   :file: /media/anwaldt/ANWALDT_2TB/WORK/TEACHING/HPI_2020-21/webaudio/weather/weather.html
+
 
 
 -----
@@ -107,100 +121,7 @@ into more or less pleasing (annoying) tones:
 Code
 ====
 
-.. code-block:: html
-
-   <!doctype html>
-   <html>
-
-   <head>
-   <title>Where would you rather be?</title>
-   </head>
-
-   <blockquote style="border: 2px solid #122; padding: 10px; background-color: #ccc;">
-
-   <body>
-   <p>Where would you rather be?</p>
-   <p>
-   <button onclick="berlin()">Berlin</button>
-   <button onclick="honolulu()">Honolulu</button>
-   <button onclick="stop()">Stop</button>
-
-   </p>
-
-
-   </body>
-
-   <div id="weather">
-   <div id="description"></div>
-   <h1 id="temp"></h1>
-   <div id="location"></div>
-   </div>
-   </blockquote>
-
-   <script>
-
-   var audioContext = new window.AudioContext
-   var oscillator   = audioContext.createOscillator()
-   var gainNode     = audioContext.createGain()
-
-   gainNode.gain.value = 0
-
-   oscillator.connect(gainNode)
-   gainNode.connect(audioContext.destination)
-
-   oscillator.start(0)
-   oscillator.frequency.setValueAtTime(100, audioContext.currentTime);
-
-   function berlin()
-   {
-       get_weather('Berlin')
-       gainNode.gain.linearRampToValueAtTime(1, audioContext.currentTime + 1);
-
-   }
-
-   function honolulu()
-   {
-       get_weather('Honolulu')
-       gainNode.gain.linearRampToValueAtTime(1, audioContext.currentTime + 1);
-   }
-
-   function stop()
-   {
-   gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 1);
-   }
-
-   function frequency(y)
-   {
-   oscillator.frequency.value = y
-   }
-
-   function get_weather( cityName )
-   {
-       var key = 'eab7c410674e15bfdd841f66941a92c2';
-       fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityName+ '&appid=' + key)
-       .then(function(resp) { return resp.json()}) // Convert data to json
-       .then(function(data) {
-       setSynth(data);
-       })
-       .catch(function() {
-       // catch any errors
-       });
-   }
-
-   function setSynth(d)
-   {
-       var celcius = Math.round(parseFloat(d.main.temp)-273.15);
-       var fahrenheit = Math.round(((parseFloat(d.main.temp)-273.15)*1.8)+32);
-
-       oscillator.frequency.linearRampToValueAtTime(1000*(100/(celcius*celcius)), audioContext.currentTime + 1);
-
-       document.getElementById('description').innerHTML = d.weather[0].description;
-       document.getElementById('temp').innerHTML = celcius + '&deg;';
-       document.getElementById('location').innerHTML = d.name;
-   }
-
-   </script>
-   </html>
+.. listing:: weather/weather.html html
 
 
 Links and More Examples
@@ -209,103 +130,3 @@ Links and More Examples
 Using the API in JavaScript is thoroughly explained here:
 https://bithacker.dev/fetch-weather-openweathermap-api-javascript
 
-
- 
-.. |example| raw:: html
-
-   <!doctype html>
-   <html>
-
-   <head>
-   <title>Where would you rather be?</title>
-   </head>
-
-   <blockquote style="border: 2px solid #122; padding: 10px; background-color: #ccc;">
-
-   <body>
-   <p>Where would you rather be?</p>
-   <p>
-   <button onclick="berlin()">Berlin</button>
-   <button onclick="honolulu()">Honolulu</button>
-   <button onclick="stop()">Stop</button>
-
-   </p>
-
-
-   </body>
-
-   <div id="weather">
-   <div id="description"></div>
-   <h1 id="temp"></h1>
-   <div id="location"></div>
-   </div>
-   </blockquote>
-
-   <script>
-
-   var audioContext = new window.AudioContext
-   var oscillator   = audioContext.createOscillator()
-   var gainNode     = audioContext.createGain()
-
-   gainNode.gain.value = 0
-
-   oscillator.connect(gainNode)
-   gainNode.connect(audioContext.destination)
-
-   oscillator.start(0)
-   oscillator.frequency.setValueAtTime(100, audioContext.currentTime);
-
-   function berlin()
-   {
-   get_weather('Berlin')
-   gainNode.gain.linearRampToValueAtTime(1, audioContext.currentTime + 1);
-
-   }
-
-   function honolulu()
-   {
-   get_weather('Honolulu')
-   gainNode.gain.linearRampToValueAtTime(1, audioContext.currentTime + 1);
-   }
-
-   function stop()
-   {
-   gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 1);
-   }
-
-   function frequency(y)
-   {
-   oscillator.frequency.value = y
-   }
-
-   function get_weather( cityName )
-   {
-   var key = 'eab7c410674e15bfdd841f66941a92c2';
-   fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityName+ '&appid=' + key)
-   .then(function(resp) { return resp.json()}) // Convert data to json
-   .then(function(data) {
-   setSynth(data);
-   })
-   .catch(function() {
-   // catch any errors
-   });
-   }
-
-   function setSynth(d)
-   {
-   var celcius = Math.round(parseFloat(d.main.temp)-273.15);
-   var fahrenheit = Math.round(((parseFloat(d.main.temp)-273.15)*1.8)+32);
-
-   oscillator.frequency.linearRampToValueAtTime(1000*(100/(celcius*celcius)), audioContext.currentTime + 1);
-
-   document.getElementById('description').innerHTML = d.weather[0].description;
-   document.getElementById('temp').innerHTML = celcius + '&deg;';
-   document.getElementById('location').innerHTML = d.name;
-   }
-
-   </script>
-   </html>
-
-	
-
-  

@@ -4,25 +4,22 @@
 <head>
 <title>Where would you rather be?</title>
 </head>
-
 <blockquote style="border: 2px solid #122; padding: 10px; background-color: #ccc;">
-
 <body>
-<p>Where would you rather be?</p>
+<p>What does the weather sound like in ...?</p>
 <p>
-<button onclick="berlin()">Berlin</button>
-<button onclick="honolulu()">Honolulu</button>
+<button onclick="myFunction()">Enter City Name</button>
 <button onclick="stop()">Stop</button>
+<p id="demo"></p>
 
 </p>
 
-
 </body>
-
+<div id="location"></div>
 <div id="weather">
 <div id="description"></div>
 <h1 id="temp"></h1>
-<div id="location"></div>
+<h1 id="humidity"></h1>
 </div>
 </blockquote>
 
@@ -30,28 +27,34 @@
 
 var audioContext = new window.AudioContext
 var oscillator   = audioContext.createOscillator()
+var modulator    = audioContext.createOscillator()
+
+// the output gain
 var gainNode     = audioContext.createGain()
+
+var modInd        = audioContext.createGain();
+modInd.gain.value = 100;
 
 gainNode.gain.value = 0
 
+modulator.connect(modInd)
+modInd.connect(oscillator.detune)
 oscillator.connect(gainNode)
 gainNode.connect(audioContext.destination)
 
 oscillator.start(0)
 oscillator.frequency.setValueAtTime(100, audioContext.currentTime);
 
-function berlin()
-{
-    get_weather('Berlin')
-    gainNode.gain.linearRampToValueAtTime(1, audioContext.currentTime + 1);
+modulator.start(0)
+modulator.frequency.setValueAtTime(100, audioContext.currentTime);
 
+function myFunction() {
+  var city = prompt("Enter City Name", "Potsdam");
+  if (city != null) {
+  get_weather(city)
+  }
 }
 
-function honolulu()
-{
-    get_weather('Honolulu')
-    gainNode.gain.linearRampToValueAtTime(1, audioContext.currentTime + 1);
-}
 
 function stop()
 {
@@ -81,11 +84,18 @@ function setSynth(d)
     var celcius = Math.round(parseFloat(d.main.temp)-273.15);
     var fahrenheit = Math.round(((parseFloat(d.main.temp)-273.15)*1.8)+32);
 
+    var humidity = d.main.humidity;
+
     oscillator.frequency.linearRampToValueAtTime(1000*(100/(celcius*celcius)), audioContext.currentTime + 1);
+
+    modulator.frequency.linearRampToValueAtTime(humidity, audioContext.currentTime + 1);
+
+    gainNode.gain.linearRampToValueAtTime(1, audioContext.currentTime + 1);
 
     document.getElementById('description').innerHTML = d.weather[0].description;
     document.getElementById('temp').innerHTML = celcius + '&deg;';
     document.getElementById('location').innerHTML = d.name;
+    document.getElementById('humidity').innerHTML = 'Humidity: '+humidity;
 }
 
 </script>
