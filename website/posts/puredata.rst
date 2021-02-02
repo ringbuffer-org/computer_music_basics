@@ -34,7 +34,7 @@ Its frequency can be controlled with a slider:
 
 
    
-Working with OCS
+Working with OSC
 ----------------
 
 
@@ -48,36 +48,37 @@ externals, since this results in more compact patches.
 For using them, install the external ``mrpeach`` with
 the Deken tool inside Puredata: https://puredata.info/docs/Deken
 
-SENDING OSC
+
+Sending OSC
 ===========
 
 
 
-THIS EXAMPLE SENDS DATA VIA OSC BETWEEN TWO
-PUREDATA PATCHES ON THE SAME MACHINE.
-IT USES THE HOSTNAME ``LOCALHOST`` INSTEAD OF AN 
-IP ADDRESS.
-THE PATH  ``OSCILLATOR/FREQUENCY``
-OF THE OSC MESSAGE HAS BEEN DEFINED ARBITRARILY -
-IT HAS TO MATCH BETWEEN CLIENT AND RECEIVER.
-BEFORE SENDING OSC MESSAGES, THE CONNECT MESSAGE
-NEEDS TO BE CLICKED.
+This example sends data via osc between two
+puredata patches on the same machine.
+It uses the hostname ``localhost`` instead of an 
+IP address.
+The path  ``oscillator/frequency``
+of the OSC message has been defined arbitrarily -
+it has to match between client and receiver.
+Before sending osc messages, the connect message
+needs to be clicked.
 
 
-.. FIGURE:: /IMAGES/BASICS/PD-OSC-SEND.PNG
-	    :WIDTH: 400
+.. figure:: /images/basics/pd-osc-send.png
+	    :width: 400
 
 
-RECEIVING OSC
+Receiving OSC
 =============
 
-BEFORE RECEIVING OSC MESSAGES, THE ``UDPRECEIVE`` OJECT
-NEEDS TO KNOW WHICH  PORT TO LISTEN ON.
-MESSAGES ARE THEN UNPACKED AND ROUTED ACCORDING
-TO THEIR PATH.
+Before receiving osc messages, the ``udpreceive`` oject
+needs to know which  port to listen on.
+Messages are then unpacked and routed according
+to their path.
 
-.. FIGURE:: /IMAGES/BASICS/PD-OSC-RECEIVE.PNG
-	    :WIDTH: 400
+.. figure:: /images/basics/pd-osc-receive.png
+	    :width: 400
 
 
 
@@ -86,3 +87,5 @@ References
 
 .. publication_list:: bibtex/visual-programming.bib
 	   :style: unsrt
+
+		 

@@ -15,3 +15,9 @@ NASA
 
 NASA offers a great variety of open APIs
 with data from astronomy: https://api.nasa.gov/
+
+
+WHO
+---
+
+https://www.who.int/data/gho/info/gho-odata-api

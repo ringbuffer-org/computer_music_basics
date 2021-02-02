@@ -10,7 +10,8 @@
 
 
 Icecast is a free software solution for creating
-accessible web-radio streams.
+accessible web-radio streams: https://icecast.org/
+
 It plays nicely with JACK on Linux audio servers,
 allowing the broadcasting of complex
 sound synthesis and sonification projects.

@@ -3,7 +3,7 @@
 .. date: 2020-11-05 13:47:06 UTC
 .. tags: 
 .. category: basics:languages
-.. priority: 2
+.. priority: 5
 .. link: 
 .. description: 
 .. type: text
@@ -48,13 +48,15 @@ sclang
 It represents the client side when working with
 SC. It can  for example be started in a terminal by running:
 
- $ slang
+ $ sclang
 
 The terminal will then change into ``sclang``  mode
 and SC commands can be entered:
 
  sc3> 
 
+Running SC Files
+================
 
 SuperCollider code is written in text files with the
 extensions ``.sc`` or ``.scd``.
@@ -62,11 +64,14 @@ On Linux and Mac systems, a complete SC file can
 be executed in the terminal by calling the language
 with the file as argument:
 
- $ slang sine-example.sc
+ $ sclang sine-example.sc
 
 The program will then run in the background or
 launch the included GUI elements.
 
+
+Variable Names
+==============
 
 Global variables are either single letters (``s`` is preserved for the server)
 or start with a tilde: ``~var_name``).
@@ -74,6 +79,9 @@ Local variables, used in functions, need to be defined explicitly:
 
  var var_name;
 
+ 
+Control Rate vs Audio Rate
+==========================
  
 SC works with two internal signal types.
 When something is used with the extension ``.ar``,

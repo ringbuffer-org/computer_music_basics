@@ -67,11 +67,9 @@ Puckette & IRCAM
 Most of the active music programming
 environments, such as Puredata, Max/MSP, SuperCollider or CSound,
 are descendants of the MUSIC languages.
-%
 Graphical programming languages like Max/MSP
 and Puredata were actually born as patching and mapping environments.
-%
-Their common ancestor, the \textit{Patcher}, developed by
+Their common ancestor, the Patcher, developed by
 Miller Puckette at CCRMA in the 1980s,
 was a graphical environment for connecting 
 MAX real-time processes and for controlling MIDI instruments. 
