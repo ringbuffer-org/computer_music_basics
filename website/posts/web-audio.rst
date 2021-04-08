@@ -26,7 +26,7 @@ Since HTML is kept minimal, the code is compact but
 the GUI is very basic.
 
 .. raw:: html
-   :file: /media/anwaldt/ANWALDT_2TB/WORK/TEACHING/HPI_2020-21/webaudio/sine_example/sine_example.html
+   :file: /media/anwaldt/ANWALDT_2TB/WORK/TEACHING/Computer_Music_Basics/webaudio/sine_example/sine_example.html
 
 
 Code
