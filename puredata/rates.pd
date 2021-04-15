@@ -1,0 +1,15 @@
+#N canvas 191 227 850 590 10;
+#X floatatom 79 46 5 0 0 0 - - -, f 5;
+#X obj 79 138 print;
+#X obj 280 138 dac~;
+#X obj 181 196 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 254 312 activate audio;
+#X msg 181 240 \; pd dsp 1;
+#X obj 280 46 osc~ 1234;
+#X text 13 21 A control rate connection:;
+#X text 233 21 An audio rate connection:;
+#X text 45 194 Bang to activate DSP:;
+#X connect 0 0 1 0;
+#X connect 3 0 5 0;
+#X connect 6 0 2 0;

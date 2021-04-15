@@ -1,11 +1,11 @@
-.. title: Puredata
-.. slug: puredata
+.. title: Using OSC in Pure Data
+.. slug: using-osc-in-pure-data
 .. date: 2020-11-05 13:46:52 UTC
-.. tags: 
-.. category: basics:languages
+.. tags:
+.. category: basics:puredata
 .. priority: 3
-.. link: 
-.. description: 
+.. link:
+.. description:
 .. type: text
 
 About
@@ -33,7 +33,7 @@ Its frequency can be controlled with a slider:
 	    :width: 400
 
 
-   
+
 Working with OSC
 ----------------
 
@@ -43,7 +43,7 @@ Dependencies
 
 OSC can be used in Puredata without further packages,
 by means of the ojects ``netsend``, ``oscformat`` and ``oscparse``.
-The following examples are based on additional 
+The following examples are based on additional
 externals, since this results in more compact patches.
 For using them, install the external ``mrpeach`` with
 the Deken tool inside Puredata: https://puredata.info/docs/Deken
@@ -56,7 +56,7 @@ Sending OSC
 
 This example sends data via osc between two
 puredata patches on the same machine.
-It uses the hostname ``localhost`` instead of an 
+It uses the hostname ``localhost`` instead of an
 IP address.
 The path  ``oscillator/frequency``
 of the OSC message has been defined arbitrarily -
@@ -87,5 +87,3 @@ References
 
 .. publication_list:: bibtex/visual-programming.bib
 	   :style: unsrt
-
-		 

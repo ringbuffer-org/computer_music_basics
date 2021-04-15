@@ -1,15 +1,15 @@
 .. title: Using Python for Control
 .. slug: using-python-for-control
 .. date: 2020-11-05 13:47:15 UTC
-.. tags: 
-.. category: basics:peripherals
-.. priority: 11
-.. link: 
-.. description: 
+.. tags:
+.. category: basics:control
+.. priority: 3
+.. link:
+.. description:
 .. type: text
 
 
-   
+
 Python offers many useful tools for
 preparing data and  controlling synthesis processes.
 Although it can also be used for actual
@@ -30,7 +30,7 @@ using pip:
  $ pip install python-osc
  $ pip install pythonosc
 
- 
+
 An example project for controlling a Faust-built
 synthesizer with Python is featured in this
 software repository:
@@ -43,10 +43,9 @@ Python & JACK
 
 The *JACK Audio Connection Kit Client for Python*
 by Matthias Geier connects Python processes to
-the JACK server: 
+the JACK server:
 https://github.com/spatialaudio/jackclient-python/
 
 This integration of Python in a JACK ecosystem
 can be helpful not only for audio processing, but
 also for synchronization of processes.
-

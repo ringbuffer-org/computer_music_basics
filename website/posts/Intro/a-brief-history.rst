@@ -1,11 +1,11 @@
-.. title: Origins
-.. slug: origins
+.. title: A Brief History
+.. slug: a-brief-history
 .. date: 2020-11-05 13:47:15 UTC
-.. tags: 
+.. tags:
 .. category: basics:introduction
 .. priority: 1
-.. link: 
-.. description: 
+.. link:
+.. description:
 .. type: text
 
 
@@ -25,7 +25,7 @@ synthesized piece of music (Roads, 1980):
 
 .. youtube:: PM64-lqYyZ8
 	  :width: 500
-		  
+
 MUSIC and its versions (I, II, III, ...)
 are direct or indirect ancestors to most
 recent languages for sound processing.
@@ -35,7 +35,7 @@ potential of the computer as a musical instrument:
 
     *“There are no theoretical limitations to the performance of the computer as a source of musical sounds, in contrast to the performance of ordinary instruments.”* (Mathews, 1963)
 
-    
+
 Mathews created the first digital musical
 pieces himself, but in order to fully explore the musical
 potential, he was joined by composers, artists and other
@@ -59,6 +59,7 @@ After migrating it to a *PDP-6* computer,
 Chowning worked on his groundbreaking digital compositions,
 using the FM method and spatial techniques.
 
+-----
 
 Puckette & IRCAM
 ----------------
@@ -71,8 +72,8 @@ Graphical programming languages like Max/MSP
 and Puredata were actually born as patching and mapping environments.
 Their common ancestor, the Patcher, developed by
 Miller Puckette at CCRMA in the 1980s,
-was a graphical environment for connecting 
-MAX real-time processes and for controlling MIDI instruments. 
+was a graphical environment for connecting
+MAX real-time processes and for controlling MIDI instruments.
 
 -----
 
