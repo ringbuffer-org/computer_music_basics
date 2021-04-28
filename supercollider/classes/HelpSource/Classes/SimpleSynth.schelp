@@ -1,0 +1,48 @@
+TITLE:: SimpleSynth
+summary:: Example class
+categories:: SC Examples
+
+DESCRIPTION::
+
+Play sine waves.
+
+CLASSMETHODS::
+
+METHOD:: new
+
+Create an instance.
+
+
+INSTANCEMETHODS::
+
+METHOD:: duration
+Change the sustain length.
+
+ARGUMENT:: d
+Duration in seconds.
+
+METHOD:: play
+Play once.
+
+ARGUMENT:: f
+The base frequency.
+
+
+EXAMPLES::
+
+code::
+// create an object
+x = SimpleSynth.new;
+
+// set the duration
+x.duration(0.2)
+
+// play with f=400
+x.play(400)
+
+// change duration
+x.duration(3)
+
+// play with f=2000
+x.play(2000)
+::
