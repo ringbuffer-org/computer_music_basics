@@ -1,0 +1,2 @@
+#N canvas 345 532 460 174 10;
+#X obj 67 33 arguments foo 2;

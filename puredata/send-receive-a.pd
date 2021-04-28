@@ -1,0 +1,8 @@
+#N canvas 3210 338 450 300 10;
+#X obj 220 47 r \$0-localvalue;
+#X floatatom 148 121 5 0 0 0 - - -, f 5;
+#X obj 64 44 r value;
+#X floatatom 107 121 5 0 0 0 - - -, f 5;
+#X connect 0 0 1 0;
+#X connect 2 0 3 0;
+#X coords 0 -1 1 1 85 60 1 100 100;
