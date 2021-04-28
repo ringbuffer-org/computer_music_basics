@@ -1,0 +1,94 @@
+<center>
+  <canvas id="adsrCanvas" width="500" height="200" >Your browser does not support the HTML5 canvas tag
+</canvas>
+</center>
+
+<p>Attack Time:
+  <input type="range" min="0" max="0.25" value="1" class="slider"  step="0.001"  oninput="set_attack(this.value)">
+</p>
+
+<p>Decay Time:
+  <input type="range" min="0" max="0.25" value="1" class="slider"  step="0.001"  oninput="set_decay(this.value)">
+</p>
+
+<p>Sustain Level:
+  <input type="range" min="0" max="1" value="1" class="slider"  step="0.001"  oninput="set_sustain_level(this.value)">
+</p>
+
+<p>Sustain Time:
+  <input type="range" min="0" max="0.25" value="1" class="slider"  step="0.001"  oninput="set_sustain_time(this.value)">
+</p>
+
+<p>Release Time:
+  <input type="range" min="0" max="0.25" value="1" class="slider"  step="0.001"  oninput="set_release(this.value)">
+</p>
+
+
+<script>
+
+  var levels = [0,1,0.5,0.5,0];
+  var times  = [0.25,0.25,0.25,0.25];
+
+  function graph() {
+    var canvas = document.getElementById("adsrCanvas");
+    var theContext = canvas.getContext("2d");
+    var width    = 500;
+    var height   = 200;
+    var uSpacing = 10;
+    var border   = 20;
+    var scalar   = 100;
+
+    theContext.clearRect(0, 0, width, height)
+    theContext.strokeRect(0, 0, width, height)
+
+    theContext.beginPath();
+
+    theContext.moveTo(0, height);
+
+    var t = 0;
+
+    for (var x = 0; x < levels.length; x++) {
+
+      val  = height-(levels[x]*height);
+      theContext.lineTo(t, val);
+      t=t+(times[x]*width);
+    }
+    theContext.stroke();
+  }
+
+
+  graph();
+
+  function set_attack(y)
+  {
+    times[0] = y;
+    graph();
+  }
+
+  function set_decay(y)
+  {
+    times[1] = y;
+    graph();
+  }
+
+  function set_sustain_level(y)
+  {
+    levels[2] = y;
+    levels[3] = y;
+    graph();
+  }
+
+  function set_sustain_time(y)
+  {
+    times[2] = y;
+    graph();
+  }
+
+  function set_release(y)
+  {
+    times[3] = y;
+    graph();
+  }
+
+
+</script>

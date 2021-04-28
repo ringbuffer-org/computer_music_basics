@@ -1,0 +1,70 @@
+<center>
+  <canvas style="data-canvas" id="adsrCanvas" width="500" height="200" >Your browser does not support the HTML5 canvas tag
+</canvas>
+</center>
+
+<p>Attack Time:
+  <input type="range" min="0" max="0.25" value="1" class="slider"  step="0.001"  oninput="set_attack(this.value)">
+</p>
+
+<p>Decay Time:
+  <input type="range" min="0" max="1" value="1" class="slider"  step="0.001"  oninput="set_decay(this.value)">
+</p>
+
+
+<script>
+
+  var times  = [0.05,0.25];
+
+  function graph() {
+    var canvas = document.getElementById("adsrCanvas");
+    var theContext = canvas.getContext("2d");
+    var width    = 500;
+    var height   = 200;
+    var uSpacing = 10;
+    var border   = 20;
+    var scalar   = 100;
+
+    theContext.clearRect(0, 0, width, height)
+    theContext.strokeRect(0, 0, width, height)
+
+    theContext.beginPath();
+
+    theContext.moveTo(0, height);
+
+    var t = (times[0]*width);
+
+    theContext.lineTo(t, 0);
+
+    for (var x = 0; x < width-t; x++) {
+
+      val  = height - height*(1/(times[1]*x + 1));
+
+//      (height-t) / ((times[1]*x-height-t));
+
+      theContext.lineTo(x+t, val);
+
+    }
+
+
+    theContext.stroke();
+
+  }
+
+
+  graph();
+
+  function set_attack(y)
+  {
+    times[0] = y;
+    graph();
+  }
+
+  function set_decay(y)
+  {
+    times[1] = 0.1*(1-y);
+    graph();
+  }
+
+
+</script>
