@@ -9,20 +9,27 @@
 .. type: text
 
 
-Supercollider (SC) is a server-client-based
-tool for sound synthesis and composition.
-SC was started by James McCartney in 1996 and
-is free software since 2002.
-It can be used on Mac, Linux and Windows
-systems and comes with a large collection
+Supercollider (SC) is a server-client-based tool for sound synthesis and composition.
+SC was started by James McCartney in 1996 and is free software since 2002.
+It can be used on Mac, Linux and Windows systems and comes with a large collection
 of community-developed extensions.
 The client-server principle aims at live coding and makes it a powerful
 tool for distributed and embedded systems,
 allowing the full remote control of synthesis processes.
 
+There are many ways of approaching SuperCollider, depending on the
+intended use case. Some tutorials focus on sequencing, others on live coding
+or sound design.
+This introduction aims at programming remotely controlled synthesis and processing
+servers, which involves signal routing and OSC capabilities.
+
+-----
+
+Getting SC
+----------
 
 Binaries, source code and build or installation
-instructions can be found at the SC github site.
+instructions can be found at the SC GitHub site.
 If possible, it is recommended to build the latest
 version from the repository:
 
@@ -55,8 +62,10 @@ Multiple clients can connect to a running server.
 The dedicated ScIDE allows convenient features for
 live coding and project management:
 
+
 .. figure:: /images/basics/supercollider-components.png
     :width: 400
+    :align: center
 
     Server, client and ScIDE.
 
@@ -72,6 +81,9 @@ SC. It can for example be started in a terminal by running:
 .. code-block:: console
 
  $ sclang
+
+
+|
 
 Just as with other interpreted languages, such as
 Python, the terminal will then change into ``sclang``  mode.
@@ -96,6 +108,11 @@ SuperCollider language:
 
 .. thumbnail:: /images/basics/scide.png
 
+  *ScIDE*
+
+
+|
+
 When booting the ScIDE, it automatically launches sclang
 and is then ready to interpret.
 Files opened in the IDE can be executed as a whole.
@@ -105,12 +122,13 @@ handy in live coding, when exploring possibilities or prototyping.
 In addition, the IDE features tools for monitoring various
 server properties.
 
+----
 
 Some Language Details
-=====================
+---------------------
 
 Variable Names
---------------
+==============
 
 Global variables are either single letters - ``s`` is preserved for the
 default server - or start with a tilde: ``~varname``).
@@ -120,9 +138,10 @@ Local variables, used in functions, need to be defined explicitly:
 
  var foo;
 
+----
 
 Evaluating Selections
----------------------
+=====================
 
 - Individual sections of code can be evaluated by selecting
   them and pressing ``Control + Enter``.
@@ -130,9 +149,10 @@ Evaluating Selections
 - Single lines of code can be evaluated by placing the cursor and
   pressing ``Shift + Enter``
 
+-----
 
 Parentheses
------------
+===========
 
 Parentheses can help structuring SC code for live programming.
 Placing the cursor inside a region between parentheses and

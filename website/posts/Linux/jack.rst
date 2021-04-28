@@ -1,4 +1,4 @@
-.. title: Using JACK Audio 
+.. title: Using JACK Audio
 .. slug: using-jack-audio
 .. date: 2020-11-05 10:47:15 UTC
 .. tags:
@@ -13,9 +13,9 @@ The `JACK API <https://jackaudio.org/>`_ implements
 an audio server, allowing the connection of various software clients and
 hardware interfaces.
 In short, it turns the whole system into a digital audio workstation (DAW).
-It is the the standard on Linux (pro) audio systems,
+It is the the standard way of working on Linux (pro) audio systems,
 but is also available for Mac and Windows.
-JACK needs a backend to connect to the actual audio hardware.
+JACK needs a back end to connect to the actual audio hardware.
 On Linux systems, this is usually *ALSA* (Mac uses *Core Audio* and Windows *ASIO*).
 
 ----

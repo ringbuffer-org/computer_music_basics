@@ -1,11 +1,27 @@
 <!doctype html>
 <html>
 
-<blockquote style="border: 2px solid #122; padding: 10px; background-color: #ccc;">
+<head>
+  <title>Sine Example</title>
 
-  <head>
-    <title>Sine Example</title>
-  </head>
+  <!-- embedded CSS for slider appearance -------------------------------------->
+
+  <style>
+  /* The slider look */
+  .minmalslider {
+    -webkit-appearance: none;   
+    appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+  }
+  </style>
+</head>
+
+<!-- HTML control elements  --------------------------------------------------->
+
+<blockquote style="border: 2px solid #122; padding: 10px; background-color: #ccc;">
 
   <body>
     <p>Sine Example.</p>
@@ -13,21 +29,23 @@
       <button onclick="play()">Play</button>
       <button onclick="stop()">Stop</button>
       <span>
-	<input id="pan" type="range" min="10" max="1000" step="1" value="440" oninput="frequency(this.value);">
+	<input  class="minmalslider"  id="pan" type="range" min="10" max="1000" step="1" value="440" oninput="frequency(this.value);">
 	Frequency
       </span>
     </p>
-  
   </body>
 
 </blockquote>
 
 
+<!-- JavaScript for audio processing ------------------------------------------>
+
   <script>
+
     var audioContext = new window.AudioContext
     var oscillator = audioContext.createOscillator()
     var gainNode = audioContext.createGain()
-    
+
     gainNode.gain.value = 0
 
     oscillator.connect(gainNode)
@@ -35,21 +53,19 @@
 
     oscillator.start(0)
 
+    // callback functions for HTML elements
     function play()
     {
       gainNode.gain.value = 1
     }
-
     function stop()
     {
       gainNode.gain.value = 0
     }
-    
     function frequency(y)
     {
       oscillator.frequency.value = y
     }
-    
-  
+
   </script>
 </html>

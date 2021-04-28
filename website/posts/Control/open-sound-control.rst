@@ -8,24 +8,25 @@
 .. description:
 .. type: text
 
-Open Sound Control (OSC) is the de facto standard
+`Open Sound Control <http://opensoundcontrol.org/>`_ (OSC) is the standard
 for exchanging control data between audio applications
 in distributed systems and on local setups with
-multiple components: http://opensoundcontrol.org/
+multiple components.
 Almost any programming language and environment for
 computer music offers means for using OSC, usually builtin.
 
 
-OSC is based on UDP/IP protocol in a client-server way.
-A server needs to be started for listening to messages
+OSC is based on the UDP/IP protocol in a client-server paradigm.
+A server needs to be started for listening to incoming messages
 sent from a client. For bidirectional communication,
 each participant needs to implement both a server and a client.
-Servers are start listening on a freely chosen port,
+Servers start listening on a freely chosen port,
 whereas clients send their messages to an arbitrary IP address and port.
 
+----
 
-Typical OSC Messages
---------------------
+OSC Messages
+------------
 
 A typical OSC message consists of a path and
 an arbitrary number of arguments.

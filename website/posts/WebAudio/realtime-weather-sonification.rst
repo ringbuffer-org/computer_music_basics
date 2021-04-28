@@ -1,14 +1,14 @@
 .. title: Realtime Weather Sonification
 .. slug: realtime-weather-sonification
 .. date: 2020-11-05 13:47:51 UTC
-.. tags: 
-.. category: basics:sonification
-.. link: 
-.. description: 
+.. tags:
+.. category: basics:webaudio
+.. link:
+.. description:
 .. type: text
 .. has_math: true
 .. data:
-
+.. priority: 2
 
 OpenWeatherMap
 --------------
@@ -24,9 +24,12 @@ information in the browser:
 
    https://api.openweathermap.org/data/2.5/weather?q=Potsdam&appid=eab7c410674e15bfdd841f66941a92c2
 
+
+-----
+
 JSON Data Structure
 -------------------
-   
+
 The resulting output in JSON looks like this:
 
 .. code-block:: json
@@ -86,10 +89,11 @@ Web Audio.
 Temperatures to Frequencies
 ---------------------------
 
+
 Mapping
 =======
 
-In this example we are using a simple freuency modulation
+In this example we are using a simple frequency modulation
 formula for turning temperature and humidity
 into more or less pleasing (annoying) sounds.
 The frequency of a first oscillator is derived
@@ -98,8 +102,9 @@ from the temperature:
 :math:`\displaystyle f_1 = 10 \frac{1}{{T^2 / C^{\circ} }}`
 
 The modulator frequency is controlled by the humidity :math:`H`:
-      
-:math:`y = sin(2 \pi (f_1 + 100*sin(2 \pi H t))t)`
+
+:math:`y = sin(2 \pi (f_1 + 100 \cdot \sin(2 \pi H t))t)`
+
 
 -----
 
@@ -117,11 +122,14 @@ of the audio processes:
 
 -----
 
-      
+
 Code
 ====
 
 .. listing:: weather/weather.html html
+
+
+-----
 
 
 Links and More Examples
@@ -129,4 +137,3 @@ Links and More Examples
 
 Using the API in JavaScript is thoroughly explained here:
 https://bithacker.dev/fetch-weather-openweathermap-api-javascript
-

@@ -12,7 +12,7 @@
 Boot a Server
 =============
 
-Synthesis and processing happens inside an SC server. So the first thing to do when creating sound with SuperCollider is to boot a server. The ScIDE offers menu entries for doing that. However, using code for doing so increases the flexibility. In this first example we will boot the default server:
+Synthesis and processing happens inside an SC server. So the first thing to do when creating sound with SuperCollider is to boot a server. The ScIDE offers menu entries for doing that. However, using code for doing so increases the flexibility. In this first example we will boot the default server. It is per default associated with the global variable ``s``:
 
 .. code-block:: supercollider
 
@@ -57,10 +57,17 @@ After creating just the sine wave node, the server will show the following node 
      1 group
         1001 temp__1
 
+|
+
+The GUI version of the node tree looks as follows. This representation is updated in real time, when left open:
+
+.. figure:: /images/basics/sc-nodes-1.png
+    :width: 400
+
+
 .. note::
 
-  The server itself does not know any variable names but   addresses all nodes by their ID. IDs are assigned in an ascending order. The sine wave node can be accessed with the ID ``1001``. Nodes are arranged inside groups, which will be introduced later. By default, all nodes are added to the default node ``1``.
-
+  The server itself does not know any variable names but   addresses all nodes by their ID. IDs are assigned in an ascending order. The sine wave node can be accessed with the ID ``1001``.
 
 -----
 

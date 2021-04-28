@@ -1,1 +1,1 @@
-jupyter nbconvert --to rst *.ipynb  --no-input
+jupyter nbconvert --log-level WARN --to html *.ipynb  --no-input

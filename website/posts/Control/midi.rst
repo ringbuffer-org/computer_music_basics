@@ -16,11 +16,40 @@ Prophet-600 and the Jupiter-6.
 Although limited in resolution from a recent point of view,
 it is still a standard for conventional applications -
 yet to be replaced by the newly released MIDI 2.0.
+Besides rare mismatches and some limitations, MIDI devices
+can be connected without complications.  
+Physically, MIDI has been introduced with the still widespread
+5-pin connector, shown below. In recent devices, MIDI is usually
+transmitted via USB.
 
+.. raw:: html
+
+   <div align="center">
+   <a href="discount"><img width="150" src="/images/basics/midi-input.png" alt="MIDI jack  (5-pin DIN)."></a>
+   <p><i>
+   MIDI jack  (5-pin DIN).
+   </i></p>
+   </div>
+
+
+
+
+|
+
+
+
+
+
+
+----
 
 Standard MIDI Messages
 ----------------------
 
+MIDI transmits binary coded messages with a speed of
+$31250\\  \\mathrm{kbit/s}$. Timing and latency are thus
+not a problem when working with MIDI. However, the resolution of control
+values can be a limiting factor.
 Standard MIDI messages consist of three Bytes, namely one
 status Byte (first bit green) and two data bytes (first bit red).
 The first bit declares the Byte either a status Byte (1) or a
@@ -51,6 +80,8 @@ for pitch, velocity or control changes.
     Channel Pressure              Dx      Pressure value      None
     Pitch Bend                    Ex      MSB                 LSB
 
+----
+
 Pitch Bend
 ----------
 
@@ -58,6 +89,8 @@ If you are stuck with MIDI for some reason but need a higher
 resolution, the Pitch Bend parameter can help.
 Each MIDI channel has one Pitch Bend, each with two combined
 data Bytes, resulting in a resolution of :math:`128^2 = 16384` steps.
+
+-----
 
 
 System Exclusive

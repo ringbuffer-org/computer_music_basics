@@ -14,6 +14,8 @@ About
 Puredate (PD) is the free and open source version of Max/MSP, also developed and maintained by Miller Puckette. PD is one of the best options for people new to computer music, due to the obvious signal flow. It is a very helpful for exploring the basics of
 sound synthesis and programming but can also be used for advanced applications: https://puredata.info/community/member-downloads/patches In addition, PD offers simple and flexible means for creating control and GUI software.
 
+There are a lot of great tutorials and examples online.
+This one features almost anything to know: `write.flossmanuals.net/pure-data/`_
 
 
 Installing Extensions
@@ -21,6 +23,8 @@ Installing Extensions
 
 The official standard version of Pure Data is referred to *Pd-vanilla*. It features a `Deken <https://github.com/pure-data/deken>`_, a framework to for installing externals from within Pure Data. Some of the examples in this section make use of such extensions. The GUI version of Deken is located in the menu under ``Help->Find Externals``. After downloading an extension to the default location of the operating system, the paths need to be added, manually in ``Edit->Preferences->Path``.
 
+This site is very helpful when figuring out which extension a missing object belongs to:
+http://write.flossmanuals.net/pure-data/audio-filters/
 
 The Sine Example
 ----------------

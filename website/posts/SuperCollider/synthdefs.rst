@@ -9,8 +9,8 @@
 .. type: text
 
 
-SynthDefs
----------
+Sending a SynthDef to a Server
+------------------------------
 
 SynthDefs are templates for Synths, which are
 sent to a server:
@@ -36,6 +36,11 @@ sent to a server:
  )
 
 
+-----
+
+Create a Synth from a SynthDef
+------------------------------
+
 Once a SynthDef has been sent to the server,
 instances can be created:
 
@@ -47,8 +52,12 @@ instances can be created:
     // create another synth from the SynthDef
     ~another_synth = Synth(\sine_example, [\f, 1100, \a, 1]);
 
+-----
 
-Parameters of running synths can be changed,
+Changing Synth Parameters
+-------------------------
+
+All parameters defined in the SynthDef of running synths can be changed,
 using the associated variable on the client side:
 
 .. code-block:: supercollider
@@ -56,6 +65,11 @@ using the associated variable on the client side:
     // set a parameter
     ~my_synth.set(\f,900);
 
+
+---------
+
+Removing Synths
+---------------
 
 Running synths with a client-side
 variable can be removed from the server:
