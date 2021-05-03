@@ -1,0 +1,31 @@
+#N canvas 1643 770 313 506 10;
+#N canvas 1011 760 450 300 sub 0;
+#X obj 171 386 list trim;
+#X obj 171 359 list prepend send;
+#X floatatom 171 294 5 0 0 0 - - -, f 5;
+#X obj 195 439 udpsend;
+#X msg 248 423 disconnect;
+#X msg 248 399 connect localhost 5510;
+#X obj 171 152 vsl 15 128 0 1000 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 500 1;
+#X obj 171 327 oscformat exfaust0 Cutoff;
+#X floatatom 118 293 5 0 0 0 - - -, f 5;
+#X obj 118 151 vsl 15 128 0 1000 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 300 1;
+#X obj -2 326 oscformat exfaust0 Pitch;
+#X text 109 125 Pitch;
+#X text 159 124 Cutoff;
+#X obj 321 357 loadbang;
+#X connect 0 0 3 0;
+#X connect 1 0 0 0;
+#X connect 2 0 7 0;
+#X connect 4 0 3 0;
+#X connect 5 0 3 0;
+#X connect 6 0 2 0;
+#X connect 7 0 1 0;
+#X connect 8 0 10 0;
+#X connect 9 0 8 0;
+#X connect 10 0 1 0;
+#X connect 13 0 5 0;
+#X coords 0 -1 1 1 111 222 1 100 100;
+#X restore 16 13 pd sub;

@@ -8,41 +8,38 @@
 .. description:
 .. type: text
 
-About
------
+Vanilla Only
+------------
 
-Puredate (PD) is the free and open source version
-of Max/MSP, also developed and maintained by Miller Puckette.
-PD is one of the best options for people
-new to computer music, due to the obvious signal flow.
-It is a very helpful for exploring the basics of
-sound synthesis and programming but can also be
-used for advanced applications: https://puredata.info/community/member-downloads/patches
-In addition, PD offers simple and flexible means
-for creating control and GUI software.
+The default version of PD is referred to as *Vanilla*.
+OSC can be used in Puredata without further packages,
+by means of the ojects ``netsend``, ``oscformat`` and ``oscparse``.
 
+Sending OSC
+===========
 
-
-The Sine Example
-----------------
-
-This first example creates a sine wave oscillator.
-Its frequency can be controlled with a slider:
-
-.. figure:: /images/basics/pd-sine.png
+.. figure:: /images/basics/pd-osc-send-vanilla.png
 	    :width: 400
 
 
+Receiving OSC
+=============
 
-Working with OSC
+.. figure:: /images/basics/pd-osc-receive-vanilla.png
+	    :width: 400
+
+
+------
+
+
+Using Externals
 ----------------
 
 
 Dependencies
 ============
 
-OSC can be used in Puredata without further packages,
-by means of the ojects ``netsend``, ``oscformat`` and ``oscparse``.
+
 The following examples are based on additional
 externals, since this results in more compact patches.
 For using them, install the external ``mrpeach`` with
