@@ -3,7 +3,7 @@
 .. date: 2020-11-05 13:47:06 UTC
 .. tags:
 .. category: basics:supercollider
-.. priority: 6
+.. priority: 3
 .. link:
 .. description:
 .. type: text

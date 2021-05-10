@@ -3,25 +3,25 @@
 .. date: 2021-05-02 10:40:00 UTC
 .. tags:
 .. category: basics:supercollider
-.. priority: 10
+.. priority: 9
 .. link:
 .. description:
 .. type: text
 
 The ``Buffer`` class manages samples in SuperCollider.
 There are many ways to use samples, based on these buffers.
-The following example loads a WAV file and creates a looping
-node. When running, the playback speed can be changed:
+The following example loads a WAV file (find it in the download)
+and creates a looping node. When running, the playback speed can be changed:
 
 
 .. code-block:: supercollider
 
   s.boot;
 
-  // get script's directory for relative paths
-  ~root_DIR = thisProcess.nowExecutingPath.dirname++"/";
+  // get and enter the absolute path to a sample
+  ~sample_path = "/some/directory/sala_formanten.wav";
 
-  ~buffer  = Buffer.read(s,~root_DIR++"../audio/sala_formanten.wav");
+  ~buffer  = Buffer.read(s,~sample_path);
 
   (
   ~sampler = {
@@ -38,3 +38,13 @@ node. When running, the playback speed can be changed:
 
   // set the play rate manually
   ~sampler.set(\rate,-0.1);
+
+
+------
+
+Exercise
+========
+
+.. admonition:: Exercise
+
+		Combine the sample looper example with the control bus and mouse input example to create a synth for *scratching* sound files.

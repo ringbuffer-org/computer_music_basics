@@ -1,4 +1,4 @@
-#N canvas 296 228 635 576 10;
+#N canvas 991 459 635 576 10;
 #X msg 109 14 port 6666;
 #X obj 109 37 udpreceive;
 #X obj 109 60 unpackOSC;

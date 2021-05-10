@@ -143,11 +143,21 @@ Local variables, used in functions, need to be defined explicitly:
 Evaluating Selections
 =====================
 
+Some of the examples in the SC section of this class are in the repository,
+whereas other only exist as snippets on these pages.
+In general, all these examples can be explored by copy-pasting the
+code blocks from the pages into the ScIDE.
+They can then be evaluated in blocks or line-wise
+but can not be executed as complete files.
+These features help to run code in the ScIDE subsequently:
+
+
 - Individual sections of code can be evaluated by selecting
   them and pressing ``Control + Enter``.
 
 - Single lines of code can be evaluated by placing the cursor and
   pressing ``Shift + Enter``
+
 
 -----
 
