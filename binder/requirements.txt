@@ -5,3 +5,4 @@ tikzplotlib
 IPython
 ipywidgets
 soundfile
+ipympl
