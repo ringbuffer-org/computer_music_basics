@@ -17,7 +17,7 @@ Although limited in resolution from a recent point of view,
 it is still a standard for conventional applications -
 yet to be replaced by the newly released MIDI 2.0.
 Besides rare mismatches and some limitations, MIDI devices
-can be connected without complications.  
+can be connected without complications.
 Physically, MIDI has been introduced with the still widespread
 5-pin connector, shown below. In recent devices, MIDI is usually
 transmitted via USB.
@@ -100,3 +100,18 @@ SysEx messages can be freely defined by manufacturers.
 They are often used for dumping or loading settings and presets,
 but can also be used for arbitrary control purposes.
 SysEx messages can have any length and are not standardized.
+
+
+-----
+
+MIDI Note to Hertz
+------------------
+
+When working with MIDI, a conversion from MIDI pitch to Hertz is often necessary.
+There are two simple formulas for doing that. They both refer to the MIDI pitch of 69, wich corresponds to a frequency of 440 Hz:
+
+.. math::
+  f[\mathrm{Hz}] = 2 \frac{\mathrm{MIDI}-69}{12} 440
+
+.. math::
+  \mathrm{MIDI} = 69 +12 \log_2 \left( \frac{f}{440 \mathrm{Hz}} \right)

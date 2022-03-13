@@ -74,6 +74,14 @@ On different branches, techniques developed from that seed (Bilbao, 2009):
 .. figure:: /images/basics/bilbao_history.png
 	    :width: 800
 
+-----
+
+The following family tree focuses on the tools used in this class and is thus without any claim to completeness:
+
+.. figure:: /images/basics/computer_music_pedegree.png
+	    :width: 800
+
+-----
 
 Chowning & CCRMA
 ----------------
@@ -111,6 +119,13 @@ Links
 -----
 
 `120 Years of Electronic Music <http://120years.net/>`_ is a very thorough site on history and development of electronic musical instruments.
+
+A talk by  Paul Davis (Jack, Ardour) on the development of open source audio:
+
+.. youtube:: dk2AMwc4e2k
+	  :width: 500
+
+
 
 -----
 

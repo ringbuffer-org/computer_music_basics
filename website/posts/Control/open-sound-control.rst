@@ -23,6 +23,9 @@ each participant needs to implement both a server and a client.
 Servers start listening on a freely chosen port,
 whereas clients send their messages to an arbitrary IP address and port.
 
+
+The ports 0 to 1023 are reserved for common TCP/IP applications and can thus not be used in most cases.
+
 ----
 
 OSC Messages

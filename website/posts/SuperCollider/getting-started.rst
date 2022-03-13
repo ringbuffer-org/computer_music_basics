@@ -149,6 +149,9 @@ In general, all these examples can be explored by copy-pasting the
 code blocks from the pages into the ScIDE.
 They can then be evaluated in blocks or line-wise
 but can not be executed as complete files.
+This is caused by the problem of synchronous vs asynchronous processes,
+which is explained later: `Synchronous vs Asynchronous </SuperCollider/synchronous-vs-asynchronous/>`_
+
 These features help to run code in the ScIDE subsequently:
 
 
