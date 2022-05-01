@@ -29,7 +29,7 @@ sine wave oscillator with frequency control and a mute
 button:
 
 .. raw:: html
-   :file: /media/anwaldt/ANWALDT_2TB/WORK/TEACHING/Computer_Music_Basics/webaudio/sine_example/sine_example.html
+   :file: ../Computer_Music_Basics/webaudio/sine_example/sine_example.html
 
 
 ------
@@ -48,7 +48,7 @@ Since HTML is kept minimal, the code is compact but
 the GUI is very basic.
 
 
-.. listing:: /media/anwaldt/ANWALDT_2TB/WORK/TEACHING/Computer_Music_Basics/webaudio/sine_example/sine_example.html html
+.. listing:: ../Computer_Music_Basics/webaudio/sine_example/sine_example.html html
 
 
 -----

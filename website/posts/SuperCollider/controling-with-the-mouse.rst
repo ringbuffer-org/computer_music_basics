@@ -5,7 +5,7 @@
 .. category: basics:supercollider
 .. priority: 6
 .. link:
-.. description:
+.. description:Exercise
 .. type: text
 
 
@@ -36,4 +36,4 @@ Exercise
 
 .. admonition:: Exercise
 
-		Use the mouse example with the previous `sawtooth-filter example </SuperCollider/combining-nodes-in-supercollider/>`_ to control pitch and filter characteristics.
+		Use the mouse example with the previous `sawtooth-filter example </computer_music_basics/SuperCollider/combining-nodes-in-supercollider/>`_ to control pitch and filter characteristics.

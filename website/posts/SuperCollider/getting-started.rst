@@ -33,7 +33,7 @@ instructions can be found at the SC GitHub site.
 If possible, it is recommended to build the latest
 version from the repository:
 
-https://supercollider.github.io/download
+https://supercollider.github.io/downloads
 
 SuperCollider comes with a large bundle of help files and code examples
 but first steps are usually not easy.
@@ -64,10 +64,11 @@ live coding and project management:
 
 
 .. figure:: /images/basics/supercollider-components.png
-    :width: 400
-    :align: center
+  :figwidth: 100%
+  :width: 60%
+  :align: center
 
-    Server, client and ScIDE.
+  Server, client and ScIDE.
 
 ----
 
@@ -106,10 +107,12 @@ The SuperCollider IDE (ScIDE) is the environment for
 live coding in ``sclang``, allowing the control of the
 SuperCollider language:
 
-.. thumbnail:: /images/basics/scide.png
+.. figure:: /images/basics/scide.png
+  :figwidth: 100%
+  :width: 60%
+  :align: center
 
   *ScIDE*
-
 
 |
 
@@ -127,16 +130,64 @@ server properties.
 Some Language Details
 ---------------------
 
+
+
+Parentheses
+===========
+
+Parentheses can help structuring SC code for live programming.
+Placing the cursor inside a region between parentheses and
+pressing ``Control + Enter`` evaluates the code inside the parentheses.
+This way of coding is not suited for scripts which are executed as one.
+
+.. code-block:: supercollider
+
+  (
+	post('Hello ');
+	postln('World!');
+  )
+
+
+------
+
+
 Variable Names
 ==============
 
 Global variables are either single letters - ``s`` is preserved for the
-default server - or start with a tilde: ``~varname``).
-Local variables, used in functions, need to be defined explicitly:
+default server - or start with a tilde: ``~varname``). They can be declared
+and used anywhere in a language instance.
+The first letter of tilde variables must be lowercase.
+Local variables, used in functions or code blocks, need to be defined explicitly:
 
 .. code-block:: supercollider
 
- var foo;
+  // single-letter-global variable:
+  x = 1.0;
+
+  // tilde-global variables:
+  ~aValue = 1.1;
+
+  // local variable:
+  var foo;
+
+
+Declare First
+~~~~~~~~~~~~~
+
+All declarations of local variables must happen in the beginning of a function or block.
+The following example throws an error:
+
+.. code-block:: supercollider
+
+  (
+  var xValue = 1.0;
+
+  xValue.postln;
+
+  var yValue = 2.1;
+  )
+
 
 ----
 
@@ -164,16 +215,39 @@ These features help to run code in the ScIDE subsequently:
 
 -----
 
-Parentheses
-===========
+Functions
+=========
 
-Parentheses can help structuring SC code for live programming.
-Placing the cursor inside a region between parentheses and
-pressing ``Control + Enter`` evaluates the code inside the parentheses.
+
+Functions in SC are defined inside curly brackets.
+Arguments can are declared in the very beginning.
+Once created, a function is used by calling the ``.value()`` method:
 
 .. code-block:: supercollider
 
-  (
-	post('Hello ');
-	postln('World!');
-  )
+    (
+    ~poster = {
+
+    	arg a,b;
+
+    	var y = a+b;
+
+    	y.postln;
+
+    };
+    )
+
+    ~poster.value(1,1);
+
+
+Arguments can also be defined inside pipes:
+
+.. code-block:: supercollider
+
+    ~poster = {
+
+    	|a,b|
+
+    	a.postln;
+
+    };

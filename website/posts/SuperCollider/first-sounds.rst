@@ -24,7 +24,8 @@ Synthesis and processing happens inside an SC server. So the first thing to do w
 A First Node
 ------------
 
-In the SC server, sound is generated and processed inside nodes. These nodes can later be manipulated, arranged and connected. A simple node can be defined inside a function curly brackets:
+In the SC server, sound is generated and processed inside nodes. These nodes can later be manipulated, arranged and connected.
+A simple node can be defined inside a function curly brackets:
 
 .. code-block:: supercollider
 
@@ -62,8 +63,9 @@ After creating just the sine wave node, the server will show the following node 
 The GUI version of the node tree looks as follows. This representation is updated in real time, when left open:
 
 .. figure:: /images/basics/sc-nodes-1.png
-    :width: 400
-
+  :figwidth: 100%
+  :width: 50%
+  :align: center
 
 .. note::
 

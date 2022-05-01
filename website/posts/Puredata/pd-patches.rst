@@ -3,7 +3,7 @@
 .. date: 2020-11-05 13:46:52 UTC
 .. tags:
 .. category: basics:puredata
-.. priority: 3
+.. priority: 11
 .. link:
 .. description:
 .. type: text
@@ -19,7 +19,9 @@ Arguments are passed to objects after the name, separated by a white space.
 The patch ``arguments-help.pd`` shows this by creating an ``arguments`` object:
 
 .. figure:: /images/basics/pd-arguments-1.png
-	:width: 400
+	:figwidth: 100%
+	:width: 400px
+	:align: center
 
 
 Inside an abstraction, individual arguments can be accessed with the ``$`` operator and
@@ -29,7 +31,9 @@ as shown in ``arguments-help``. Once created, it will print the arguments to the
 main Pd window:
 
 .. figure:: /images/basics/pd-arguments-2.png
-	:width: 500
+	:figwidth: 100%
+	:width: 600px
+	:align: center
 
 
 
@@ -61,7 +65,9 @@ The left hand audio input of the suppatch is a fixed frequency sawtooth.
 The right hand control input sets the Q of the filter.
 
 .. figure:: /images/basics/pd-patches-1.png
-	:width: 400
+	:figwidth: 100%
+	:width: 600px
+	:align: center
 
 On the inside, the ``moog~`` object is used. It is not part of PD vanilla and can be installed
 with the *flatspace ggee* extensions from Deken. The red rectangle marks the area visual in the

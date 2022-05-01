@@ -21,7 +21,7 @@ In most cases, the mirrored partials are inharmonic and distort the signal
 and for higher fundamental frequencies the pitch is fully dissolved.
 
 .. raw:: html
-   :file: /media/anwaldt/ANWALDT_2TB/WORK/TEACHING/Computer_Music_Basics/webaudio/aliasing-square.html
+   :file: ../Computer_Music_Basics/webaudio/aliasing-square.html
 
 -----
 

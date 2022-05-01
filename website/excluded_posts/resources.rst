@@ -13,7 +13,7 @@
 Software Repository
 -------------------
 
-- Code examples and supplementary material can be found in the `software repository <https://github.com/anwaldt/computer-music-basics>`_.
+- Code examples and supplementary material can be found in the `CMB software repository <https://github.com/anwaldt/computer-music-basics>`_.
 
 
 

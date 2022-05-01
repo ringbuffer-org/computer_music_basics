@@ -116,13 +116,13 @@ extracts temperature and humidity and sets the parameters
 of the audio processes:
 
 .. raw:: html
-   :file: /media/anwaldt/ANWALDT_2TB/WORK/TEACHING/Computer_Music_Basics/webaudio/weather/weather.html
+   :file: ../Computer_Music_Basics/webaudio/weather/weather.html
 
 
 
 -----
 
-.. 
+..
 .. Code
 .. ====
 ..

@@ -11,4 +11,4 @@
 
 
 .. raw:: html
-   :file: /media/anwaldt/ANWALDT_2TB/WORK/TEACHING/Computer_Music_Basics/jupyter/stft.html
+   :file: ../Computer_Music_Basics/jupyter/stft.html

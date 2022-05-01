@@ -15,4 +15,4 @@ Depending on the sample frequency of the system running the browser, this will l
 frequency passes the Nyquist frequency:
 
 .. raw:: html
-   :file: /media/anwaldt/ANWALDT_2TB/WORK/TEACHING/Computer_Music_Basics/webaudio/aliasing-sine.html
+   :file: ../Computer_Music_Basics/webaudio/aliasing-sine.html

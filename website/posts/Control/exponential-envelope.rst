@@ -29,4 +29,4 @@ The following example adds a short linear attack before the exponential decay.
 This minimizes clicks which otherwise occur through the rapid step from $0$ to $1$:
 
 .. raw:: html
-   :file: /media/anwaldt/ANWALDT_2TB/WORK/TEACHING/Computer_Music_Basics/webaudio/exponential.html
+   :file: ../Computer_Music_Basics/webaudio/exponential.html

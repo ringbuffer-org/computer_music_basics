@@ -55,9 +55,11 @@ Moving Nodes
 ------------
 
 .. figure:: /images/basics/sc-order-1.png
-    :width: 400
+  :figwidth: 100%
+  :width: 40%
+  :align: center
 
-    *Node Tree before moving the processor node.*
+  *Node Tree before moving the processor node.*
 
 |
 
@@ -75,6 +77,8 @@ its node index or by the related name in sclang:
 
 
 .. figure:: /images/basics/sc-order-2.png
-    :width: 400
+  :figwidth: 100%
+  :width: 40%
+  :align: center
 
-    *Node Tree after moving the processor node.*
+  *Node Tree after moving the processor node.*

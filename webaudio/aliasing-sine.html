@@ -9,13 +9,13 @@
 <body>
 
   <p><p>Pitch (Hz): <span id="oscillatorA_text"></span></p>
-  <input type="range" min="1" max="100000" value="440" class="slider"   step="0.01"  oninput="set_osc_freq(this.value)">
+  <input type="range"  min="1" max="100000" value="440" class="slider" step="0.01"  oninput="set_osc_freq(this.value)">
 </p>
 
 
 
 <p><p>Output Gain: <span id="gain_text"></span></p>
-<input type="range" min="0" max="1" value="0" class="slider"   step="0.01"  oninput="set_gain(this.value)">
+<input type="range" id="gain_slider" min="0" max="1" value="0" class="slider"   step="0.01"  oninput="set_gain(this.value)">
 </p>
 
 <div class="scope-box">
@@ -52,6 +52,11 @@ oscillatorA.connect(gain);
 gain.connect(context.destination);
 gain.gain.value = 0;
 
+const volumeSlider = document.getElementById('gain_slider');
+
+volumeSlider.addEventListener('input', function() {
+  gain.gain.value = this.value;
+}, false);
 
 
 analyser.fftSize = 2048;

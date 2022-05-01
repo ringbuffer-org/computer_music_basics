@@ -10,11 +10,18 @@
 
 Like many other audio programming environments, PD makes a difference between control signals and audio signals. They run at different rates and can not be combined, unless converted. Audio operations require the DSP to be activated, whereas control rate signal work at any time. Objects define whether an outlet gets or outputs control or audio rate signals. Objects with audio inputs or outputs are usually named with a ``~``. Control rate connections are thinner than audio rate signals.
 The example `rates.pd <https://raw.githubusercontent.com/anwaldt/computer-music-basics/main/puredata/rates.pd>`_ simply shows
-an audio and a control rate connection:
+an audio and a control rate connection, with audio connections being thicker:
 
 
 .. figure:: /images/basics/pd-rates.png
-	    :width: 600
+	:figwidth: 100%
+	:width: 600px
+	:align: center
+
+The example also introduces the ``osc~`` oject, which generates a sine wave at ``1234 Hz``.
+The message on the bottom of the patch is a patch-based way of activating the DSP, which can be very
+helpful when working with automated and background processes.
+
 
 -----
 
@@ -27,7 +34,9 @@ This object needs to be triggered to grab a snapshot, which is done with a ``met
 The output is a level indicator for the LFO at 0.1 Hz:
 
 .. figure:: /images/basics/pd-audio-to-control.png
-	    :width: 400
+	:figwidth: 100%
+	:width: 400px
+	:align: center
 
 -----
 
@@ -39,4 +48,6 @@ The conversion shown in the example `audio-to-control.pd <https://raw.githubuser
 However, in some cases it might be necessary to convert control signals to audio rate. This is done with the ``sig~`` object:
 
 .. figure:: /images/basics/pd-control-to-audio.png
-	    :width: 400
+	:figwidth: 100%
+	:width: 400px
+	:align: center

@@ -12,15 +12,12 @@
 Control Rate vs Audio Rate
 ==========================
 
-SC works with two internal signal types or rates.
-When something is used with the extension ``.ar``,
-this refers to audio signals (audio rate),
-whereas ``.kr`` uses the control rate.
+SC works with two internal signal types or rates. When something is used with the extension ``.ar``,
+this refers to audio signals (audio rate), whereas ``.kr`` uses the control rate.
 For both rates, buses can be created.
 
 
 -----
-
 
 
 Creating  Buses
@@ -47,7 +44,6 @@ with the following command:
 
 ------
 
-
 Bus Indices
 ===========
 
@@ -59,6 +55,55 @@ and can be queried with the following command:
 
   ~aBus.index
   ~cBus.index
+
+
+The indices of user-defined audio buses start counting after all output
+an input buses. The number of input and output buses can be defined before
+booting a server. The default setting uses 2 input and 2 output buses.
+
+.. list-table:: Audio buses
+   :widths: 25 25
+   :header-rows: 1
+   :align: center
+
+   * - Indices
+     - Audio Buses
+   * - 0...1
+     - Outputs
+   * - 2...3
+     - Inputs
+   * - 4
+     - First user-defined bus
+
+
+The number of input and output buses can be queried after boot:
+
+.. code-block:: supercollider
+
+  s.options.numOutputBusChannels;
+  s.options.numInputBusChannels;
+
+
+-----
+
+
+Audio Input
+===========
+
+The SoundIn UGen makes it convenient to access the audio input buses
+without keeping track of the outputs. This node simply passes the first
+input to the firs output:
+
+.. code-block:: supercollider
+
+  { Out.ar(0,SoundIn.ar(0))}.play
+
+
+Note that this is equivalent to using the proper offset with a regular audio input:
+
+.. code-block:: supercollider
+
+  { Out.ar(0,In.ar(s.options.numOutputBusChannels))}.play
 
 
 -----
@@ -84,6 +129,20 @@ There is a short version, which has limitations and does not specify the bus typ
 
     ~aBus.scope()
 
+
+----
+
+Frequency Scope
+---------------
+
+Any bus can also be monitored with a frequency scope.
+The first arguments define the size.
+The third argument defines the bus to analyze, in this case the
+first output bus:
+
+.. code-block:: supercollider
+
+  FreqScope.new(400, 200, 0, server: s);
 
 
 ----

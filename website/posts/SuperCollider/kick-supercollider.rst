@@ -33,7 +33,9 @@ It can be plotted using the envelope's ``plot`` method:
 -----
 
 .. figure:: /images/basics/sc-envelope.png
-	   :width: 400
+  :figwidth: 100%
+  :width: 60%
+  :align: center
 
 
 

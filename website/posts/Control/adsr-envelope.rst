@@ -33,7 +33,7 @@ the ADSR model can generate amplitude and timbral envelopes for slowly evolving 
 like strings or sounds with sharp attacks and release:
 
 .. raw:: html
-   :file: /media/anwaldt/ANWALDT_2TB/WORK/TEACHING/Computer_Music_Basics/webaudio/adsr.html
+   :file: ../Computer_Music_Basics/webaudio/adsr.html
 
 
 |

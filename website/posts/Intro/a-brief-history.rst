@@ -14,11 +14,8 @@ Beginnings of Computer Music
 ----------------------------
 
 First experiments on digital sound creation took place 1951 in  Australia, on the  `CSIRAC <https://cis.unimelb.edu.au/about/csirac/music/music.html>`_ computer system.
-
-
-Besides from these experiments, digital sound synthesis dates back to the first experiments of Max Mathews at Bell Labs
-in the mid 1950s. Mathews created the MUSIC I
-programming language for generating musical
+Besides from these experiments, the development of digital sound synthesis dates back to the first experiments of Max Mathews at Bell Labs
+in the mid 1950s. Mathews created the MUSIC I programming language for generating musical
 sounds through synthesis of a single triangular  waveform on an IBM 704.
 *The Silver Scale*, realized by psychologist Newman Guttman in 1957, is one of the first ever digitally synthesized piece of music (Roads, 1980).
 
