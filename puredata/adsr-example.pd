@@ -1,0 +1,35 @@
+#N canvas 834 476 1039 653 12;
+#X obj 132 135 adsr, f 40;
+#X msg 409 96 1000;
+#X obj 44 233 *~;
+#X obj 46 16 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 132 31 1, f 7;
+#X msg 80 86 0;
+#X obj 44 257 dac~ 1;
+#X text 184 70 peak;
+#X text 239 71 attack;
+#X text 294 71 decay;
+#X text 349 71 sustain;
+#X text 404 73 release;
+#X msg 187 95 1;
+#X msg 298 95 10;
+#X msg 243 94 100;
+#X obj 45 47 delay 555;
+#X msg 353 96 50, f 4;
+#X obj 17 158 osc~ 111;
+#X text 116 217 Note: all messages have to be evaluated after loading
++ changing;
+#X connect 0 0 2 1;
+#X connect 1 0 0 5;
+#X connect 2 0 6 0;
+#X connect 3 0 4 0;
+#X connect 3 0 15 0;
+#X connect 4 0 0 0;
+#X connect 5 0 0 0;
+#X connect 12 0 0 1;
+#X connect 13 0 0 3;
+#X connect 14 0 0 2;
+#X connect 15 0 5 0;
+#X connect 16 0 0 4;
+#X connect 17 0 2 0;
