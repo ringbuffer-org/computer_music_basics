@@ -47,7 +47,7 @@ It is recommended to explore the contents of the help browser.
 -----
 
 Working with PD Files
-=====================
+---------------------
 
 PD patches are organized in files with the ``.pd`` extension. This first patch
 is the well known *Hello World!* example, not using any audio processing:
@@ -66,7 +66,7 @@ It introduces two concepts:
 
 
 Edit Mode / Performance Mode
-----------------------------
+============================
 
 PD can operate in two modes:
 
@@ -78,7 +78,7 @@ Only when in *Performance Mode*, the message object can be clicked and and the o
 
 
 Text File Format
-----------------
+================
 
 All PD patches are stored as text files, declaring objects and connections line by line.
 This makes version control possible, although small changes

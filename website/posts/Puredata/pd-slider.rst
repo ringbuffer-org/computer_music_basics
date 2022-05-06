@@ -3,7 +3,7 @@
 .. date: 2022-04-28
 .. tags:
 .. category: basics:puredata
-.. priority: 4
+.. priority: 3
 .. link:
 .. description:
 .. type: text

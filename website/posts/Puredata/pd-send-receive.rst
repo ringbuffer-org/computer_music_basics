@@ -3,7 +3,7 @@
 .. date: 2020-11-05 13:46:52 UTC
 .. tags:
 .. category: basics:puredata
-.. priority: 4
+.. priority: 6
 .. link:
 .. description:
 .. type: text

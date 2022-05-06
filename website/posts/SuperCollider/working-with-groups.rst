@@ -24,6 +24,24 @@ A new group can be added from ``sclang`` as follows:
     ~g1 = Group.new();
 
 
+-----
+
+Adding Nodes to Groups
+----------------------
+
+Synth nodes can be added to groups on creation or afterwards.
+Any existing node - in this case the ``~osc`` node from the
+`previous example <http://ringbuffer.org/computer_music_basics/SuperCollider/combining-nodes-in-supercollider/>`
+- can be moved to a group using the following commands:
+
+.. code-block:: supercollider
+
+  // make it the first node in the group
+  ~osc.moveToHead(~g1)
+
+  // make it the last node in the group
+  ~osc.moveToTail(~g1)
+
 ------
 
 Relative Group Positions
@@ -95,4 +113,4 @@ Exercise
 
 .. admonition:: Exercise
 
-		Use groups to sort the nodes from the example in the section on `Combining Nodes </SuperCollider/combining-nodes-in-supercollider/>`_
+		Use groups to sort the nodes from the example in the section on `Combining Nodes </computer_music_basics/SuperCollider/combining-nodes-in-supercollider/>`_

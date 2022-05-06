@@ -3,7 +3,7 @@
 .. date: 2021-04-30 13:46:52 UTC
 .. tags:
 .. category: basics:puredata
-.. priority: 6
+.. priority: 4
 .. link:
 .. description:
 .. type: text
@@ -21,18 +21,28 @@ ADSR in PD
 
 The ADSR envelope is the most widely used temporal envelope.
 The PD help files contain an example, which can serve as a starting point
-for an ADSR object.
+for an ADSR object. It can also be downloaded here: `ADSR <https://raw.githubusercontent.com/anwaldt/computer-music-basics/main/puredata/adsr.pd>`_
 
 .. admonition:: Task
 
-		Open the example and store the object in your working directory.
+		Open the example or download the patch and store the object in your working directory.
 
 -----
 
 Once stored, the object can be used in custom patches to control
 arbitrary parameters. The following example controls the gain of a
 sine wave oscillator with an ADSR envelope.
-The delay object emulates a ``555 ms`` key press.
+The ``adsr`` object has six inlets:
+
+- 1: the trigger
+- 2: the peak value
+- 3: the attack time (ms)
+- 4: the decay time (ms)
+- 5: the sustain amount (0...100%)
+- 6: the release time (ms)
+
+The delay object emulates a ``555 ms`` key press. The only outlet is an
+audio rate signal with the envelope:
 
 .. figure:: /images/basics/pd-adsr.png
     :width: 800px
