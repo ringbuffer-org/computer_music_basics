@@ -1,5 +1,5 @@
-.. title: Making a Kick in SuperCollider
-.. slug: making-a-kick-in-supercollider
+.. title: Using Envelopes
+.. slug: using-envelopes-in-supercollider
 .. date: 2021-05-02 10:40:00 UTC
 .. tags:
 .. category: basics:supercollider
@@ -12,7 +12,7 @@
 The body of a basic electronic kick drum is a sine wave with an
 exponential decrease in frequency over time. Depending on the
 taste, this drop happens from about 200-300 Hz
-to 30-60 Hz. This can be achieves with temporal envelopes-
+to 30-60 Hz. This can be achieved with temporal envelopes.
 
 Define Envelopes
 ================

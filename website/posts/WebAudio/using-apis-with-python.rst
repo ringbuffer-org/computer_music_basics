@@ -7,7 +7,7 @@
 .. link:
 .. description:
 .. type: text
-.. priority: 4
+.. priority: 5
 
 
 Python & APIs

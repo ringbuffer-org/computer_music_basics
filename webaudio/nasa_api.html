@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en"><head>
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  </head>
+  <body>
+
+     <button onclick="get_data()">Get Orbital Periods:</button>
+
+    <div id="data_1"></div>
+    <div id="data_2"></div>
+    <div id="data_3"></div>
+    <div id="data_4"></div>
+    <div id="data_5"></div>
+    <div id="data_6"></div>
+    <div id="data_7"></div>
+    <div id="data_8"></div>
+    <div id="data_9"></div>
+    <div id="data_10"></div>
+    <div id="data_11"></div>
+    <div id="data_12"></div>
+
+    <button onclick="mute()">Mute</button>
+
+<script>
+
+  const audioCtx = new AudioContext();
+
+  const oscillators = [];
+  const gains       = [];
+
+  for(let i = 0; i < 12; i++)
+  {
+
+  const osc           = audioCtx.createOscillator();
+  osc.frequency.value = 11 * i;
+  osc.type            = 'sine';
+
+  const gain      = audioCtx.createGain();
+  gain.gain.value = 0;
+
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+
+  oscillators.push(osc);
+  gains.push(gain);
+
+  osc.start();
+
+  }
+
+
+function get_data()
+{
+  var key = 'hgl4yGA6aDHkwwquQIrCOIKhSlEpZfyEGhKMOr7i';
+
+  fetch('https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=hgl4yGA6aDHkwwquQIrCOIKhSlEpZfyEGhKMOr7i')
+  .then(function(resp) { return resp.json()}) // Convert data to json
+  .then(function(data)
+  {
+  process_data(data);
+  }
+  )
+  .catch(function()
+  {
+    document.getElementById('data_1').innerHTML = 'Can not process request.';
+  });
+}
+
+function process_data(d)
+{
+  var freq_scale = 0.25;
+
+  oscillators[0].frequency.value =  freq_scale * parseFloat(d.near_earth_objects[0].orbital_data.orbital_period);
+  oscillators[1].frequency.value =  freq_scale * parseFloat(d.near_earth_objects[1].orbital_data.orbital_period);
+  oscillators[2].frequency.value =  freq_scale * parseFloat(d.near_earth_objects[2].orbital_data.orbital_period);
+  oscillators[3].frequency.value =  freq_scale * parseFloat(d.near_earth_objects[3].orbital_data.orbital_period);
+  oscillators[4].frequency.value =  freq_scale * parseFloat(d.near_earth_objects[4].orbital_data.orbital_period);
+  oscillators[5].frequency.value =  freq_scale * parseFloat(d.near_earth_objects[5].orbital_data.orbital_period);
+  oscillators[6].frequency.value =  freq_scale * parseFloat(d.near_earth_objects[6].orbital_data.orbital_period);
+  oscillators[7].frequency.value =  freq_scale * parseFloat(d.near_earth_objects[7].orbital_data.orbital_period);
+  oscillators[8].frequency.value =  freq_scale * parseFloat(d.near_earth_objects[8].orbital_data.orbital_period);
+  oscillators[9].frequency.value =  freq_scale * parseFloat(d.near_earth_objects[9].orbital_data.orbital_period);
+  oscillators[10].frequency.value =  freq_scale * parseFloat(d.near_earth_objects[10].orbital_data.orbital_period);
+  oscillators[11].frequency.value =  freq_scale * parseFloat(d.near_earth_objects[11].orbital_data.orbital_period);
+
+  document.getElementById('data_1').innerHTML = d.near_earth_objects[0].name + ': \t'+ d.near_earth_objects[0].orbital_data.orbital_period;
+  document.getElementById('data_2').innerHTML = d.near_earth_objects[1].name + ': \t'+ d.near_earth_objects[1].orbital_data.orbital_period;
+  document.getElementById('data_3').innerHTML = d.near_earth_objects[2].name + ': \t'+ d.near_earth_objects[2].orbital_data.orbital_period;
+  document.getElementById('data_4').innerHTML = d.near_earth_objects[3].name + ': \t'+ d.near_earth_objects[3].orbital_data.orbital_period;
+  document.getElementById('data_5').innerHTML = d.near_earth_objects[4].name + ': \t'+ d.near_earth_objects[4].orbital_data.orbital_period;
+  document.getElementById('data_6').innerHTML = d.near_earth_objects[5].name + ': \t'+ d.near_earth_objects[5].orbital_data.orbital_period;
+  document.getElementById('data_7').innerHTML = d.near_earth_objects[6].name + ': \t'+ d.near_earth_objects[6].orbital_data.orbital_period;
+  document.getElementById('data_8').innerHTML = d.near_earth_objects[7].name + ': \t'+ d.near_earth_objects[7].orbital_data.orbital_period;
+  document.getElementById('data_9').innerHTML = d.near_earth_objects[8].name + ': \t'+ d.near_earth_objects[8].orbital_data.orbital_period;
+  document.getElementById('data_10').innerHTML = d.near_earth_objects[9].name + ': \t'+ d.near_earth_objects[9].orbital_data.orbital_period;
+  document.getElementById('data_11').innerHTML = d.near_earth_objects[10].name + ': \t'+ d.near_earth_objects[10].orbital_data.orbital_period;
+  document.getElementById('data_12').innerHTML = d.near_earth_objects[11].name + ': \t'+ d.near_earth_objects[11].orbital_data.orbital_period;
+
+  for(let i = 0; i < 12; i++)
+  {
+    gains[i].gain.value = (1/12)* parseFloat(d.near_earth_objects[i].absolute_magnitude_h)/20;
+  }
+}
+
+
+function mute()
+{
+  for(let i = 0; i < 12; i++)
+  {
+    gains[i].gain.value = 0;
+  }
+}
+
+</script>
+
+</body></html>

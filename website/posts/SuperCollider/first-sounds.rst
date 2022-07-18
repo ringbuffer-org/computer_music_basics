@@ -24,7 +24,8 @@ Synthesis and processing happens inside an SC server. So the first thing to do w
 A First Node
 ------------
 
-In the SC server, sound is generated and processed inside nodes. These nodes can later be manipulated, arranged and connected.
+In the SC server, sound is generated and processed inside synth nodes.
+These nodes can later be manipulated, arranged and connected.
 A simple node can be defined inside a function curly brackets:
 
 .. code-block:: supercollider
@@ -41,6 +42,13 @@ A simple node can be defined inside a function curly brackets:
  }.play;
 
  )
+
+
+UGens
+=====
+
+Inside the synth node, the UGen (Unit Generator) ``SinOsc`` is used. UGens are the binary building blocks
+for signal processing on the server. Most UGens can be used with audio rate (``.ar``) or control rate (``.kr``).
 
 -----
 
