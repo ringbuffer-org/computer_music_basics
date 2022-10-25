@@ -17,6 +17,24 @@ introduced as a means for data sonification with web-based data APIs and for
 interactive sound examples.
 Read the `W3C Candidate Recommendation <https://www.w3.org/TR/webaudio/>`_ for an in-depth documentation.
 
+-----
+
+Autoplay Policy
+---------------
+
+New browser versions come with an autoplay policy to prevent websites from playing sound on load.
+To enable the sound, one needs to "Create or resume context from inside a user gesture" (read more `<http://udn.realityripple.com/docs/Web/API/Web_Audio_API/Best_practices>`_).
+This has not been implemented in all examples on this website.
+One way to do this is, is calling the following function from a button:
+
+
+.. code-block:: python
+
+    function startAudio()
+    {
+      AudioContext.resume()
+    }
+
 
 -----
 
