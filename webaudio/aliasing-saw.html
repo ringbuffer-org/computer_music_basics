@@ -141,7 +141,8 @@ function set_pre_gain(y)
 
 
 function set_gain(y)
-{
+{  audioContext.resume()
+
   gain.gain.value = y
 }
 

@@ -19,8 +19,14 @@ in the mid 1950s. Mathews created the MUSIC I programming language for generatin
 sounds through synthesis of a single triangular  waveform on an IBM 704.
 *The Silver Scale*, realized by psychologist Newman Guttman in 1957, is one of the first ever digitally synthesized piece of music (Roads, 1980).
 
-.. youtube:: PM64-lqYyZ8
-	  :width: 500
+
+.. raw:: html
+
+  <center>
+  <iframe width="55%" height="400"
+  src="https://www.youtube.com/embed/PM64-lqYyZ8">
+  </iframe>
+  </center>
 
 ----
 
@@ -48,8 +54,15 @@ by exploring the possibilities of spectral analysis-resynthesis (1:20)
 and psychoacoustic phenomena like the Shepard tone (4:43):
 
 
-.. youtube:: RcX0ubvoZUA
-	  :width: 500
+
+.. raw:: html
+
+  <center>
+  <iframe width="55%" height="400"
+  src="https://www.youtube.com/embed/RcX0ubvoZUA">
+  </iframe>
+  </center>
+
 
 ------
 
@@ -69,14 +82,16 @@ On different branches, techniques developed from that seed (Bilbao, 2009):
 
 
 .. figure:: /images/basics/bilbao_history.png
-	    :width: 800
+		:figwidth: 100%
+		:width: 66%
 
 -----
 
 The following family tree focuses on the tools used in this class and is thus without any claim to completeness:
 
 .. figure:: /images/basics/computer_music_pedegree.png
-	    :width: 800
+		:figwidth: 100%
+		:width: 66%
 
 -----
 
@@ -90,9 +105,14 @@ After migrating it to a *PDP-6* computer,
 Chowning worked on his groundbreaking digital compositions,
 such as *Turenas (1972)*, using the frequency modulation synthesis (FM) and spatial techniques. Although in particular known for discovering the FM synthesis, these works are far more than mere studies of technical means:
 
-.. youtube:: kSbTOB5ft5c
-	  :width: 500
+ 
+.. raw:: html
 
+  <center>
+  <iframe width="55%" height="400"
+  src="https://www.youtube.com/embed/kSbTOB5ft5c">
+  </iframe>
+  </center>
 
 -----
 
@@ -107,8 +127,13 @@ was a graphical environment for connecting MAX real-time processes and for contr
 
 The new means of programming and the increase in computational power allowed *musique mixte* with digital signal processing means. *Pluton* (1988-89) by Philippe Manoury is one of the first pieces to use MAX for processing piano sounds in real time (6:00-8:30):
 
-.. youtube:: W9xjcOrl-kk
-	  :width: 500
+.. raw:: html
+
+  <center>
+  <iframe width="55%" height="400"
+  src="https://www.youtube.com/embed/W9xjcOrl-kk">
+  </iframe>
+  </center>
 
 -----
 
@@ -119,10 +144,13 @@ Links
 
 A talk by  Paul Davis (Jack, Ardour) on the development of open source audio:
 
-.. youtube:: dk2AMwc4e2k
-	  :width: 500
+.. raw:: html
 
-
+  <center>
+  <iframe width="55%" height="400"
+  src="https://www.youtube.com/embed/dk2AMwc4e2k">
+  </iframe>
+  </center>
 
 -----
 

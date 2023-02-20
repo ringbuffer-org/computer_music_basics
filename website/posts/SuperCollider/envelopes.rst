@@ -34,7 +34,7 @@ It can be plotted using the envelope's ``plot`` method:
 
 .. figure:: /images/basics/sc-envelope.png
   :figwidth: 100%
-  :width: 60%
+  :width: 40%
   :align: center
 
 
@@ -54,7 +54,7 @@ defined by the done action.
 The bus can be monitored to see the result:
 
 
-.. code-block:: supercollider
+.. code-block:: cpp
 
     s.scope(1,0,rate:'control')
 

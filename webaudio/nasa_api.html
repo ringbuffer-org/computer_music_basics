@@ -56,6 +56,8 @@
 
 function get_data()
 {
+
+
   var key = 'hgl4yGA6aDHkwwquQIrCOIKhSlEpZfyEGhKMOr7i';
 
   fetch('https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=hgl4yGA6aDHkwwquQIrCOIKhSlEpZfyEGhKMOr7i')
@@ -73,6 +75,9 @@ function get_data()
 
 function process_data(d)
 {
+
+  audioContext.resume()
+
   var freq_scale = 0.25;
 
   oscillators[0].frequency.value =  freq_scale * parseFloat(d.near_earth_objects[0].orbital_data.orbital_period);

@@ -9,7 +9,7 @@
   <style>
   /* The slider look */
   .minmalslider {
-    -webkit-appearance: none;   
+    -webkit-appearance: none;
     appearance: none;
     width: 100%;
     height: 25px;
@@ -56,6 +56,7 @@
     // callback functions for HTML elements
     function play()
     {
+      audioContext.resume()
       gainNode.gain.value = 1
     }
     function stop()
