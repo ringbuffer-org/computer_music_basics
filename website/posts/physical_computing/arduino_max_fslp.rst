@@ -169,6 +169,7 @@ whereas position values range from 0 to 1024 ($2^{10}$).
   Figure: Max patch for receiving the two sensor values.
 
 
+
 -----
 
 Additional Resources

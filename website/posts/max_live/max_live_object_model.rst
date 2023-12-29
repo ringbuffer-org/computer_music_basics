@@ -2,8 +2,8 @@
 .. slug: max4live_object_model
 .. date: 2023-02-08
 .. tags:
-.. category: basics:interfaces
-.. priority: 20
+.. category: basics:max4live
+.. priority: 2
 .. link:
 .. description:
 .. type: text
