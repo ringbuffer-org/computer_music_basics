@@ -3,7 +3,7 @@
 .. date: 2021-04-10 10:40:00 UTC
 .. tags:
 .. category: basics:supercollider
-.. priority: 8
+.. priority: 10
 .. link:
 .. description:
 .. type: text
@@ -35,24 +35,37 @@ received at the default port with the matching path:
 
 ----
 
+
+Exercise
+========
+
+.. admonition:: Send-received
+
+	Use the example from the `Section on sending OSC </computer_music_basics/SuperCollider/sending-osc-from-supercollider/>`_ to send a message to the OSCFunc.
+
+
+
+------
+
+
 OSCdef
 ------
 
-OSCdef is slightly more flexible and allows to change definitions
-on the fly, without deleting nodes:
+OSCdef is more flexible and allows to change definitions
+on the fly, without deleting nodes (the OSCdef identifier does not have to match the OSC path - but it does in this example):
 
 .. code-block:: supercollider
 
-		OSCdef(\tester,
-			{|msg, time, addr, recvPort|
+		OSCdef(\poster,
 
-			post('Revceived message to path: ');
-			msg[0].postln;
+			{|msg, time, addr, recvPort|
 
 			post('With value: ');
 			msg[1].postln;
 
-		},'/test/another', n);
+		},'/poster', n);
+
+
 
 
 
@@ -61,10 +74,32 @@ on the fly, without deleting nodes:
 Exercises
 =========
 
-.. admonition:: Exercise I
+.. admonition:: Group Exercise I
 
-		Use a SuperCollider OSC receiver with the first `PD example on sending OSC </Puredata/using-osc-in-pure-data/>`_ for sending OSC to change the value of control rate bus and monitor the bus with a scope. The `section on buses <SuperCollider/using-buses-in-supercollider/>`_ is helpful for this. Keep in mind to set the correct port (**57120**) and path in the PD patch.
+	Send messages to specific peers. To do this, you need their IP address. Their OSC receiver path has to match the path your sender uses.
 
-.. admonition:: Exercise II
 
-		Use a SuperCollider OSC receiver with the `PD example </Puredata/using-osc-in-pure-data/>`_ for controlling the subtractive synth in the `previous example </SuperCollider/combining-nodes-in-supercollider/>`_. This can be done with control rate buses or by a direct	``set()`` to the synth nodes.
+.. admonition:: Group Exercise II
+
+	Use the SynthDef from the `Section on envelopes </computer_music_basics/SuperCollider/using-envelopes-in-supercollider/>`_ inside an OSCdef to let your peers trigger sounds on your SC server.
+
+
+
+------
+
+Opening Specific UDP Ports
+--------------------------
+
+For many applications it can be helpul to open a specific port for a puropse. Sometimes the server booting process can be interrupted by messages being sent to ''57120'' before booting is competed. An additional port can be opened like this:
+
+.. code-block:: supercollider
+
+	thisProcess.openUDPPort(6666);
+
+
+A list of all open ports can be queried from the language:
+
+.. code-block:: supercollider
+
+	thisProcess.openPorts
+

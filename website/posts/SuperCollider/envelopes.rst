@@ -3,7 +3,7 @@
 .. date: 2021-05-02 10:40:00 UTC
 .. tags:
 .. category: basics:supercollider
-.. priority: 13
+.. priority: 7
 .. link:
 .. description:
 .. type: text
@@ -26,7 +26,7 @@ It can be plotted using the envelope's ``plot`` method:
 
 .. code-block:: supercollider
 
-    ~env = Env([1, 0.0001], [0.15],\exp);
+    ~env = Env([1, 0.1], [0.15], \exp);
     ~env.plot;
 
 
@@ -63,31 +63,28 @@ The bus can be monitored to see the result:
 
 -----
 
-A Sine Wave Node
-================
+A "Kick" SynthDef
+=================
 
-The following node will be used for generating the kick itself.
-It has two arguments - the gain and the pitch:
+The following SynthDef uses the envelope inside the node. No bus is needed for
+The synth has two arguments - the gain and the pitch:
+
 
 .. code-block:: supercollider
 
 
     (
-    ~synth = {
-        |gain=0,pitch=100|
+    SynthDef(\kick,
+    {
+        |gain=1,pitch=100|
+
+        var env = EnvGen.kr(~env, doneAction: Done.freeSelf);
 
         // send the signal to the output bus '0'
-        Out.ar(0, gain*SinOsc.ar(pitch));
-
-    }.play;
+        Out.ar(0, gain*SinOsc.ar(env*pitch));
+    };
+    ).send(s)
     )
-
-
-The pitch argument needs to be mapped to the first control bus (``0``):
-
-.. code-block:: supercollider
-
-    ~synth.map(\pitch,0);
 
 
 
@@ -96,12 +93,17 @@ The pitch argument needs to be mapped to the first control bus (``0``):
 Triggering it
 =============
 
-The envelope generator line can now be evaluated to retrigger the kick.
-It will keep on droning, but already has the characteristic punch:
+
+The SynthDef can now be used to create a node on the server. It receives two arguments for gain and pitch:
+
+
 
 .. code-block:: supercollider
 
-  {Out.kr(0,EnvGen.kr(~env, doneAction: Done.freeSelf))}.play
+    Synth(\kick, [1,300])
+
+
+Once the envelope is finished, the '''Done.freeSelf''' will remove the whole node from the server. When multiple envelopes are used within a node, the first one to finish will free the node, if set to '''doneAction: Done.freeSelf'''. Other doneActions can help prevent this ('''Done.none''').
 
 
 -----
@@ -111,4 +113,7 @@ Exercise
 
 .. admonition:: Exercise
 
-    Add a second envelope for the gain to stop the kick from droning.
+    Add a second envelope for the gain to the SynthDef to create a kick without clicks.
+
+
+

@@ -35,7 +35,10 @@ The following line starts a server (in the background) with the ALSA interface n
 
 .. code-block:: console
 
-	$ jackd -d alsa -d hw:PCH -r 48000 -p 128 &
+	$ jackd -d alsa -d hw:Gen -r 48000 -p 128 &
+
+
+The above example works for the 4th Gen. Scarlett 4i4 interface. TO use a different audio interface, follow the steps below.
 
 ----
 
@@ -80,9 +83,30 @@ onboard sound card:
 
 ----
 
+
+
+
+Disable Autoconnect
+-------------------
+
+With default sessings, jackd will automatically connect most new clients with the system inputs and outputs.
+In some cases (like in JackTrip network systems with many clients and specific connections) this should not happen.
+Adding the arguments '-a a' to the above jackd command (before the devices) will prevent all autoconnect request
+
+
+.. code-block:: console
+
+	jackd -a a -d alsa -d hw:Gen -r 48000 -p 128 &
+
+
+----
+
+
+
 Connecting JACK Clients
 -----------------------
 
+With autoconnect disabled, we can still use qjackct or any other GUI tool to connect Jack clients.
 As almost everything, JACK connections can be modified from the terminal.
 All available JACK ports can be listed with the following command:
 
