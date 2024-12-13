@@ -12,9 +12,14 @@
 Control Rate vs Audio Rate
 ==========================
 
-SC works with two internal signal types or rates. When something is used with the extension ``.ar``,
-this refers to audio signals (audio rate), whereas ``.kr`` uses the control rate.
-For both rates, buses can be created.
+Buses can be used to route and group signals for prjects with a more complex signal flow.
+SC works with two internal signal types: audio and control. This concept is also used in other computer music environments, such as PD or Max/MSP.
+Control signals work at a lower sampling rate and are used to *control* parameters, whereas audio signals carry what is *audible*. Audio- and control-rate signals can not be mixed arbitrarely but there are ways to convert them.
+
+This duality affects various aspects in SC. Many ``UGens`` (like signal generators and oscillators) can be used in both rates.
+With the extension ``.ar`` they produce or process audio signals (at audio rate).
+When used with ``.kr`` they operate at control rate.
+
 
 
 -----
@@ -29,7 +34,6 @@ with the following command:
 .. code-block:: supercollider
 
   ~aBus = Bus.audio(s,1);
-
 
 |
 
@@ -47,8 +51,9 @@ with the following command:
 Bus Indices
 ===========
 
-The variable ``~aBus`` is the client-side representation of the Bus.
-The server only knows it by its bus index. Bus indices are counted upwards
+The variable ``~aBus`` is merely the the client-side representation of the Bus.
+The server only knows buses by their bus index.
+Bus indices are counted upwards (for every new bus created in the language)
 and can be queried with the following command:
 
 .. code-block:: supercollider
@@ -56,6 +61,11 @@ and can be queried with the following command:
   ~aBus.index
   ~cBus.index
 
+
+-----
+
+Reserved Audio Buses
+--------------------
 
 The indices of user-defined audio buses start counting after all output
 an input buses. The number of input and output buses can be defined before
@@ -87,33 +97,13 @@ The number of input and output buses can be queried after boot:
 -----
 
 
-Audio Input
-===========
-
-The SoundIn UGen makes it convenient to access the audio input buses
-without keeping track of the outputs. This node simply passes the first
-input to the firs output:
-
-.. code-block:: supercollider
-
-  { Out.ar(0,SoundIn.ar(0))}.play
-
-
-Note that this is equivalent to using the proper offset with a regular audio input:
-
-.. code-block:: supercollider
-
-  { Out.ar(0,In.ar(s.options.numOutputBusChannels))}.play
-
-
------
 
 Monitoring Buses
-----------------
+================
 
 Any bus can be monitored with the builtin scope with the following command.
 The first argument defines the number of buses to be shown, the second
-the index of the first buses:
+the index of the first bus:
 
 
 .. code-block:: supercollider
@@ -123,41 +113,124 @@ the index of the first buses:
 
 |
 
-There is a short version, which has limitations and does not specify the bus type:
+There is also a short version, which does not specify the bus type but uses a client-side object:
 
 .. code-block:: supercollider
 
     ~aBus.scope()
 
+    ~cBus.scope()
 
-----
 
-Frequency Scope
----------------
+The standard bus meter in SC only scales from -2 to +2 and is not efficient for monitoring higher values.
 
-Any bus can also be monitored with a frequency scope.
-The first arguments define the size.
-The third argument defines the bus to analyze, in this case the
-first output bus:
+
+-----
+
+
+Audio Buses
+===========
+
+Audio Output
+------------
+
+Audio output was already used in the very first examples for
+`creating a sound in SC </computer_music_basics/SuperCollider/first-sounds/>`_.
+The UGen ``Out`` can be used at audio rate to output an audio signal to any bus by its index. With a stereo interface, this is the short version for sending a sine-wave to the left output/speaker:
 
 .. code-block:: supercollider
 
-  FreqScope.new(400, 200, 0, server: s);
+  {Out.ar(0, SinOsc.ar(1000))}.play;
+
+And to the right output/speaker:
+
+.. code-block:: supercollider
+
+  {Out.ar(1, SinOsc.ar(1000))}.play;
 
 
-----
+------
+
+
+Audio Input
+-----------
+
+With ``In.ar()`` we can get the signal of any audio bus into a node on the sever. This will become interesting for routing signals between nodes and will be explored in the following chapters.
+
+Most early stage applications will make use of the inputs from the audio interface (for microphones and instruments).
+The ``SoundIn`` - ``UGen`` makes it convenient to access the audio input buses directly.
+It is aware of the number of harware inputs and outputs and allows accessing all inputs directly with the input-index.
+This node simply passes the first input (usually 'left') to the first output (also 'left'):
+
+.. code-block:: supercollider
+
+  {Out.ar(0,SoundIn.ar(0))}.play
+
+
+Note that this is equivalent to using the proper offset with a regular audio input (which is more complicated, but can be more versatile in some cases):
+
+.. code-block:: supercollider
+
+  { Out.ar(0,In.ar(s.options.numOutputBusChannels))}.play
+
+
+
+-----
+
 
 Control Buses
 =============
 
 
-This simple sawtooth node will be used for showing how to use control buses.
-It has one argument ``freq``, which affects the fundamental frequency
-and uses the first hardware output:
+
+Setting a Control Bus
+---------------------
+
+A simple and quick way for changing the control bus on the language side
+is the ``.set()`` function of a bus:
 
 .. code-block:: supercollider
 
-  ~osc  = {arg freq=100; Out.ar(0,Saw.ar(freq))}.play;
+  ~cBus.set(1);
+
+
+The effect is visible when monitoring the bus.
+
+
+-----
+
+
+Reading Control Buses in Nodes
+------------------------------
+
+
+Control buses can be read inside a node just like audio buses, using ``In.kr()``.
+This simple sawtooth ``SynthDef`` will be used for showing how to use control buses as arguments. The first argument defines the output bus index.
+The second argument ``freq_bus`` (defaulted to ``0``) is used inside an ``In.kr()``, reading the bus' value into the variable ``freq``.
+
+
+.. code-block:: supercollider
+
+  SynthDef(\saw,
+  {
+    arg out_bus, freq_bus;
+
+    var freq = In.kr(freq_bus);
+    Out.ar(out_bus, Saw.ar(freq));
+  }).add;
+
+
+
+When creating a node from the ``SynthDef``, we pass a bus or a bus index as initiation argument:
+
+.. code-block:: supercollider
+
+  ~saw = Synth(\saw,[\out_bus, 0, \freq_bus, ~cBus]);
+
+
+
+The pitch of the sawtooth is now linked to the value of ``~cBus``.
+
 
 
 ----
@@ -167,48 +240,105 @@ Mapping a Control Bus
 ---------------------
 
 
+Another way to use bus values inside a node is mapping.
+Any input arguement of a node can be mapped to a control bus after it has been created.
+This node does the same thing as the ``SynthDef`` above:
+
+
+.. code-block:: supercollider
+
+  ~osc =
+  {
+    arg freq = 100;
+    Out.ar(0,Saw.ar(freq))
+  }.play;
+
+
 The ``map()`` function of a node can connect a control bus,
 identified by its index, with a node parameter:
 
 .. code-block:: supercollider
 
-  ~osc.map(\freq,~cBus.index);
+  ~osc.map(\freq,~cBus);
 
 
 ----
 
 
-Setting a Control Bus
----------------------
+Control Bus Output
+------------------
 
-After mapping the bus, the synth stops its sound., since the
-control bus is still set to the default value 0. This can be
-visualized with the scope command.
-A simple and quick way for changing the control bus to a
-different value is the ``set()`` function of a node.
-It can be used for all arguments of the node which are
-internally used for control rates:
+``Out.kr()`` can be used to output control-rate signals to arbitrary buses, just as outputs are used in the audio domain.
+The following node creates a sinewave LFO with a center frequency of 100 Hz, a
+modulation depth of 20 Hz and an LFO frequency of 1 Hz.
+The control bus ``~cBus`` is used as the first argument of the ``Out.kr()``:
 
 .. code-block:: supercollider
 
-  ~cBus.set(50);
+  ~mod =
+  {
+    |
+    freq   = 1,
+    center = 100,
+    depth  =  20
+    |
+    Out.kr(~cBus, depth+(shift*SinOsc.ar(freq)));
+    }.play;
+
+
+If we have one of the above sawtooth synths running and connected to the control bus. the modulation will be effective immediately. Since all LFO parameters are arguments, we can change them now by setting node parameters:
+
+
+.. code-block:: supercollider
+
+    ~mod.set(\freq,3)
+    ~mod.set(\depth,50)
+
+
 
 ----
+
 
 Multichannel Buses
 ==================
 
-Both control and audio rate buses can be created as multi channel buses.
-A scope will automatically show all channels. Individual channels can be
-mapped with an offset in relation to the index of the first channel.
-The ``setAt()`` function can be used for changing individual channel values:
+Both control and audio rate buses can be created as multi channel buses by using the second creation argument:
+
 
 .. code-block:: supercollider
 
-  ~mBus = Bus.control(s,8);
+  ~mc_Bus = Bus.control(s,8);
+  ~ma_Bus = Bus.audio(s,8);
 
-  ~mBus.scope;
+A scope will automatically show all channels. Individual channels can be
+used in ``UGens``, set and mapped with an offset in relation to the index of the first channel of the bus.
 
-  ~osc.map(\freq,~mBus.index+3);
+Using the ``\saw`` SynthDef from above, we can now use any bus from those multichannel buses:
 
-  ~mBus.setAt(3,150);
+.. code-block:: supercollider
+
+  ~saw = Synth(\saw,[\out_bus, ~ma_Bus.index+4, \freq_bus, ~mc_Bus.index+5]);
+
+We are now sending the audio output to an internal SC bus.
+It is thus not audible, but can be checked with the scope:
+
+
+.. code-block:: supercollider
+
+  ~ma_Bus.scope
+
+
+To change a single channel in a multichannel bus, use ``setAt()``.
+The first argument defines the offest (channel index) - the second one the value:
+
+.. code-block:: supercollider
+
+  ~mc_Bus.setAt(5,1)
+
+
+In a similar way, we can get all values from the multichannel bus:
+
+
+.. code-block:: supercollider
+
+  ~mc_Bus.getn(8)

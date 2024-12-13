@@ -47,8 +47,8 @@ A simple node can be defined inside a function curly brackets:
 UGens
 =====
 
-Inside the synth node, the UGen (Unit Generator) ``SinOsc`` is used. UGens are the binary building blocks
-for signal processing on the server. Most UGens can be used with audio rate (``.ar``) or control rate (``.kr``).
+Inside the synth node, the ``UGen`` (Unit Generator) ``SinOsc`` is used. ``UGens` are the building blocks
+for signal processing on the server. Most ``UGens`` can be used with audio rate (``.ar``) or control rate (``.kr``) (read more on rates and signal types in the `section on buses </computer_music_basics/SuperCollider/buses/>`_ .
 
 -----
 
